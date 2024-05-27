@@ -1,0 +1,12 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    font-family: Inter-Light,serif;
+    }
+
+    #logoHeader{
+        padding-top: 20px;
+        padding-left: 30px;
+        height: 44px;
+        width: 175px;
+    }

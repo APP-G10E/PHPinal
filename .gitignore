@@ -1,0 +1,15 @@
+# Ignore Markdown files
+*.md
+
+# Ignore .idea directory and its contents
+**/.idea/
+
+# Ignore .vscode directory and its contents
+**/.vscode/
+
+# Ignore tmp and temp folders and their contents
+**/tmp/
+**/temp/
+
+# Ignore vendor folder (Composer dependencies)
+/vendor/
