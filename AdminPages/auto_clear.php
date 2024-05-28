@@ -1,5 +1,11 @@
 <?php
-session_start();
+$page = "auto_clear.php";
+include 'auth.php';
+ensureAdmin($page);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 global $conn;
 
 include '../Controller/db_controller.php';
@@ -87,6 +93,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['clear'])) {
             if (autoClear) {
                 startAutoClear();
             }
+        });
+
+        window.addEventListener('beforeunload', function () {
+            fetch('logout.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: ''
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'logged_out') {
+                        console.log('Logged out successfully');
+                    }
+                });
         });
     </script>
 </head>
