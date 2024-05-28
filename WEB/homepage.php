@@ -89,7 +89,7 @@ include '../Styles/head.php';
 include '../Styles/footer.php';
 ?>
 
-
 </html>
 
 <script src="../Controller/lang-select.js"></script>
+<script src="../Controller/popups.js"></script>

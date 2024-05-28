@@ -392,3 +392,52 @@ footer {
     cursor: pointer;
     padding: 5px;
 }
+
+/*-*-*-*-*-*-*-*-*-*
+
+Mini Page
+
+-*-*-*-*-*-*-*-*-*-*/
+
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #121721;
+    width: 60vw;
+    height: 60vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-start;
+    border-radius: 2%;
+    padding: 15px 10px 15px 10px;
+}
+
+.pop-up-retour {
+    color: white;
+    font-family: Inter-Regular, serif;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 2vh;
+}
+
+.pop-up-retour:hover {
+    color: #908c8c;
+}
+
+.pop-up-content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 60vh;
+    width: 60vw;
+    color: white;
+    font-size: 2.5vh;
+    font-family: Inter-Regular, serif;
+    padding-right: 5vw;
+}
+
+.titre {
+    color: #3CB9FC;
+}
