@@ -17,6 +17,9 @@ include '../Styles/head.php';
 
     <link rel="stylesheet" href="/CSS/global.css">
     <link rel="stylesheet" href="/CSS/dashboard_client.css">
+
+
+    <script src="../Controller/popups.js"></script>
 </head>
 
 <!--Pop-up validation des cookies-->
@@ -84,68 +87,12 @@ include '../Styles/head.php';
 
         <div id="festival-capteurs-container">
             <p class="translatable festival-info-title" data-translation-key="volumeFestival"></p>
-            <div id="sensor-elements-container">
-
-                <div class="sensor-element">
-                    <div class="avis-volume">
-                        <p class="translatable capt-position" data-translation-key="volumeAvantDroite"></p>
-                        <div class="vote-buttons-container">
-                            <div class="avis-son translatable monter-son" data-translation-key="monterSon"></div>
-                            <div class="avis-son translatable baisser-son" data-translation-key="baisserSon"></div>
-                        </div>
-                    </div>
-                    <div class="sound-level">
-                        <div class="volume soundred"><p>102</p></div>
-                        <div class="db"><p>dB</p></div>
-                    </div>
-                </div>
-
-                <div class="sensor-element">
-                    <div class="avis-volume">
-                        <p class="translatable capt-position" data-translation-key="volumeAvantDroite"></p>
-                        <div class="vote-buttons-container">
-                            <div class="avis-son translatable monter-son" data-translation-key="monterSon"></div>
-                            <div class="avis-son translatable baisser-son" data-translation-key="baisserSon"></div>
-                        </div>
-                    </div>
-                    <div class="sound-level">
-                        <div class="volume soundwhite"><p>98</p></div>
-                        <div class="db"><p>dB</p></div>
-                    </div>
-                </div>
-
-                <div class="sensor-element">
-                    <div class="avis-volume">
-                        <p class="translatable capt-position" data-translation-key="volumeArriereGauche"></p>
-                        <div class="vote-buttons-container">
-                            <div class="avis-son translatable monter-son" data-translation-key="monterSon"></div>
-                            <div class="avis-son translatable baisser-son" data-translation-key="baisserSon"></div>
-                        </div>
-                    </div>
-                    <div class="sound-level">
-                        <div class="volume soundgreen"><p>50</p></div>
-                        <div class="db"><p>dB</p></div>
-                    </div>
-                </div>
-
-                <div class="sensor-element">
-                    <div class="avis-volume">
-                        <p class="translatable capt-position" data-translation-key="volumeArriereDroite"></p>
-                        <div class="vote-buttons-container">
-                            <div class="avis-son translatable monter-son" data-translation-key="monterSon"></div>
-                            <div class="avis-son translatable baisser-son" data-translation-key="baisserSon"></div>
-                        </div>
-                    </div>
-                    <div class="sound-level">
-                        <div class="volume soundgreen"><p>45</p></div>
-                        <div class="db"><p>dB</p></div>
-                    </div>
-                </div>
-            </div>
+            <div id="sensor-elements-container"></div>
             <p id="risques-son" class="translatable lien-precisions" data-translation-key="risquesSon"></p>
         </div>
     </div>
 </div>
+<script src="../Controller/sensor_list.js"></script>
 </body>
 
 <?php
@@ -154,7 +101,6 @@ include '../Styles/footer.php';
 
 </html>
 <script src="../Controller/lang-select.js"></script>
-<script src="../Controller/popups.js"></script>
 
 <!--
 Ajouter système de coordonnées pour les capteurs qui change les translation keys en fonction de celles-ci

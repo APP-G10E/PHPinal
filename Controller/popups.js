@@ -284,11 +284,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
-    Footer Cookies
+    Cookies
 
     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
-    document.getElementById('footerParametresCookies').addEventListener('click', function () {
+    document.addEventListener('DOMContentLoaded', function () {
+        cookies();
+    });
+
+    /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+    Fonctions actives du footer
+
+    *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+    function popUp(footerPopUp) {
+        document.body.insertAdjacentHTML('beforeend', footerPopUp);
+
+        const footerRetourElement = document.querySelector('.pop-up-retour');
+        footerRetourElement.addEventListener('click', function () {
+            document.querySelectorAll(".pop-up").forEach(el => el.remove());
+            document.getElementById('page-mask').remove();
+        });
+
+        document.getElementById('page-mask').addEventListener('click', function () {
+            document.querySelectorAll(".pop-up").forEach(el => el.remove());
+            document.getElementById('page-mask').remove();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === "Escape") {
+                document.querySelectorAll(".pop-up").forEach(el => el.remove());
+                document.getElementById('page-mask').remove();
+            }
+        });
+    }
+});
+
+function cookies() {
         const cookiesResponse = localStorage.getItem('cookiesResponse');
 
         if (!cookiesResponse || cookiesResponse) {
@@ -344,33 +377,4 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("Choix des cookies", cookiesResponse);
             });
         }
-    });
-
-    /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-
-    Fonctions actives du footer
-
-    *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-
-    function popUp(footerPopUp) {
-        document.body.insertAdjacentHTML('beforeend', footerPopUp);
-
-        const footerRetourElement = document.querySelector('.pop-up-retour');
-        footerRetourElement.addEventListener('click', function () {
-            document.querySelectorAll(".pop-up").forEach(el => el.remove());
-            document.getElementById('page-mask').remove();
-        });
-
-        document.getElementById('page-mask').addEventListener('click', function () {
-            document.querySelectorAll(".pop-up").forEach(el => el.remove());
-            document.getElementById('page-mask').remove();
-        });
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === "Escape") {
-                document.querySelectorAll(".pop-up").forEach(el => el.remove());
-                document.getElementById('page-mask').remove();
-            }
-        });
     }
-});

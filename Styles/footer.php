@@ -1,8 +1,10 @@
 <footer>
     <img src="../Assets/Champion.png" alt="logo" id="logo-foot">
     <div class="container-liens">
-        <div><p class="footer-link translatable" data-translation-key="footerCookieSettings"
-                id="footerParametresCookies"></p></div>
+        <div>
+            <script src="../Controller/popups.js"></script>
+            <p class="footer-link translatable" data-translation-key="footerCookieSettings"
+               id="footerParametresCookies" onclick="cookies()"></p></div>
         <div><p class="footer-link translatable" data-translation-key="footerDataProtection"
                 id="footerProtectionDonnees"></p></div>
         <div><p class="footer-link translatable" data-translation-key="footerLegalNotice"
