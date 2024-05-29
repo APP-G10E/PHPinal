@@ -123,48 +123,7 @@ include '../Styles/footer.php';
 
 <script src="../Controller/lang-select.js"></script>
 
-<style>
 
-    .carousel {
-        position: relative;
-        width: 900px; /* Ajusté pour afficher 3 images de 300px */
-        height: 300px;
-        overflow: hidden;
-        border-radius: 10px;
-        margin: auto;
-    }
-    .carousel-track {
-        display: flex;
-        transition: transform 1s ease;
-    }
-    .carousel-slide {
-        min-width: 300px; /* Ajusté pour chaque image */
-        height: 300px;
-    }
-    .carousel img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .carousel-buttons {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .carousel-buttons button {
-        background-color: rgba(0, 0, 0, 0.5);
-        border: none;
-        color: white;
-        padding: 10px;
-        cursor: pointer;
-    }
-    .carousel-buttons button:hover {
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-</style>
 
 <script>
     let currentIndex = 0;
