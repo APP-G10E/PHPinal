@@ -60,7 +60,7 @@ include '../Styles/head.php';
     <div class="image-container">
         <div class="featured-festivals"><strong class="translatable" data-translation-key="featuredFestivals"></strong></div>
         <br></br>
-        <div class="partner-festivals-list translatable" data-translation-key="partnerFestivalsList"></div>
+        <div class="partner-festivals-list translatable" data-translation-key="partnerFestivalsList" onclick="showFestivalList()"></div>
     </div>
     <br></br>
 
@@ -111,6 +111,49 @@ include '../Styles/head.php';
         <?php endif; ?>
     </div>
 </main>
+<div id="festival-popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hideFestivalList()">&times;</span>
+        <h3>Festivals</h3>
+        <div class="festival-table">
+            <div class="table-header">
+                <div class="cell">Name</div>
+                <div class="cell">Begin Time</div>
+                <div class="cell">End Time</div>
+                <div class="cell">Ticket Price</div>
+            </div>
+            <div class="table-body">
+                <?php
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT festivalName, beginTime, endTime, ticketPrice FROM festival";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<div class='table-row'>";
+                        echo "<div class='cell'>" . htmlspecialchars($row['festivalName']) . "</div>";
+                        echo "<div class='cell'>" . $row['beginTime'] . "</div>";
+                        echo "<div class='cell'>" . $row['endTime'] . "</div>";
+                        echo "<div class='cell'>" . $row['ticketPrice'] . "</div>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<div class='table-row'><div class='cell' colspan='4'>Aucun festival disponible.</div></div>";
+                }
+                $conn->close();
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 </body>
 <br></br>
 <br></br>
@@ -122,8 +165,6 @@ include '../Styles/footer.php';
 </html>
 
 <script src="../Controller/lang-select.js"></script>
-
-
 
 <script>
     let currentIndex = 0;
@@ -145,5 +186,12 @@ include '../Styles/footer.php';
     function prevImage() {
         currentIndex = (currentIndex - slidesToShow + totalSlides) % totalSlides;
         updateCarousel();
+    }
+    function showFestivalList() {
+        document.getElementById("festival-popup").style.display = "block";
+    }
+
+    function hideFestivalList() {
+        document.getElementById("festival-popup").style.display = "none";
     }
 </script>
