@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $organiserId = $_POST['organiserId'];
         $sql = "UPDATE `organisers` SET verified = TRUE WHERE organiserId = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('i', $organiserId);
+        $stmt->bind_param('s', $organiserId);
         $stmt->execute();
         echo json_encode(['status' => 'verified']);
         exit;
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $organiserId = $_POST['organiserId'];
         $sql = "DELETE FROM `organisers` WHERE organiserId = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('i', $organiserId);
+        $stmt->bind_param('s', $organiserId);
         $stmt->execute();
         echo json_encode(['status' => 'rejected']);
         exit;
@@ -53,8 +53,8 @@ if ($result->num_rows > 0) {
             popup.innerHTML = `
                 <h2>${organiser.firstName} ${organiser.surname}</h2>
                 <p>${organiser.reason}</p>
-                <button onclick="verifyOrganiser(${organiser.organiserId})">Verify</button>
-                <button onclick="rejectOrganiser(${organiser.organiserId})">Reject</button>
+                <button onclick="verifyOrganiser('${organiser.organiserId}')">Verify</button>
+                <button onclick="rejectOrganiser('${organiser.organiserId}')">Reject</button>
                 <button onclick="document.body.removeChild(this.parentElement)">Close</button>
             `;
             document.body.appendChild(popup);
@@ -66,7 +66,7 @@ if ($result->num_rows > 0) {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'verify=true&organiserId=' + organiserId
+                body: 'verify=true&organiserId=' + encodeURIComponent(organiserId)
             })
                 .then(response => response.json())
                 .then(data => {
@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'reject=true&organiserId=' + organiserId
+                body: 'reject=true&organiserId=' + encodeURIComponent(organiserId)
             })
                 .then(response => response.json())
                 .then(data => {
