@@ -9,13 +9,29 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+if (!isset($_POST['festivalName'])) {
+    echo json_encode(['error' => 'No festivalName parameter']);
+    exit;
+}
+
 $festivalName = $conn->real_escape_string($_POST['festivalName']);
 
-$sql = "SELECT * FROM sensors WHERE festivalName = '$festivalName'";
+$sql = "SELECT festivalId FROM festival WHERE festivalName LIKE '%$festivalName%'";
 $result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $festivalId = $row['festivalId'];
+} else {
+    echo json_encode(['error' => 'No festival found with this name']);
+    exit;
+}
+
+$sql1 = "SELECT currentSoundDensity, latitude, longitude FROM sensor WHERE festivalId = '$festivalId'";
+$result = $conn->query($sql1);
+
 $sensors = array();
-while($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) {
     $sensors[] = $row;
 }
 
