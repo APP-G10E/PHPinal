@@ -395,7 +395,7 @@ footer {
 
 /*-*-*-*-*-*-*-*-*-*
 
-Mini Page
+Pop Up
 
 -*-*-*-*-*-*-*-*-*-*/
 
@@ -441,3 +441,52 @@ Mini Page
 .titre {
     color: #3CB9FC;
 }
+
+.form-group button:hover {
+    outline: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.form-group input, .form-group textarea {
+    width: 300px;
+    padding: 10px;
+    background-color: #292e37;
+    border: 1px solid #292e37;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 15px;
+    font-family: "Inter-Regular", 'Noto Serif KR Light', sans-serif;
+    resize: none;
+}
+
+
+.form-group button {
+    width: 320px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #757575;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "Inter-Regular", 'Noto Serif KR Medium', sans-serif;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+    color: #A0A0A0;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border: 1px solid #3cb9fc;
+}
+
+.translatable,
+a {
+    display: inline-block;
+}
+

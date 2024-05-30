@@ -113,37 +113,55 @@ document.addEventListener('DOMContentLoaded', function () {
     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
     const footerPopUpContactUs = `
-            <div id="footer-truc" class="pop-up">
-                <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
-                <div class="pop-up-content">
-                    <h2 class="titre">Nous contacer :</h2>
-                    <p>Nous sommes là pour répondre à vos questions, écouter vos suggestions ou prendre en compte vos préoccupations. N'hésitez pas à nous contacter via l'un des moyens suivants : <br>
+    <div id="footer-truc" class="pop-up">
+        <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
+        <div class="pop-up-content">
+            <h2 class="titre">Nous contacer :</h2>
+            <p>Nous sommes là pour répondre à vos questions, écouter vos suggestions ou prendre en compte vos préoccupations. N'hésitez pas à nous contacter via l'un des moyens suivants : <br>
 
-                    <h2 class="titre">Formulaire de Contact :<br></h2>
-                    Remplissez simplement le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.<br>
+            <h2 class="titre">Formulaire de Contact :<br></h2>
+            Remplissez simplement le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.<br>
 
-                    Adresse Postale :<br>
-                    7 rue de Vanves<br>
-                    92130, Issy-Les-Moulineaux<br><br>
+            Adresse Postale :<br>
+            7 rue de Vanves<br>
+            92130, Issy-Les-Moulineaux<br><br>
 
-                    Téléphone : <br>
-                    +33 1 95 83 57 35<br><br>
+            Téléphone : <br>
+            +33 1 95 83 57 35<br><br>
 
-                    Email :<br>
-                    Chamπons@gmail.com<br><br>
+            Email :<br>
+            Chamπons@gmail.com<br><br>
 
-                    <h2 class="titre">Réseaux Sociaux :<br></h2>
-                    Suivez-nous sur nos réseaux sociaux pour rester informé(e) de nos dernières actualités et échanger avec nous :<br><br>
+            <h2 class="titre">Réseaux Sociaux :<br></h2>
+            Suivez-nous sur nos réseaux sociaux pour rester informé(e) de nos dernières actualités et échanger avec nous :<br><br>
 
-                    - Facebook : https://facebook.com<br>
-                    - Twitter : https://twitter.com<br>
-                    - Instagram : https://instagram.com<br>
-                    N'hésitez pas à nous contacter pour toute demande d'information supplémentaire. Votre satisfaction est notre priorité !<br>  </p>
-                
-                </div>
+            - Facebook : https://facebook.com<br>
+            - Twitter : https://twitter.com<br>
+            - Instagram : https://instagram.com<br>
+            N'hésitez pas à nous contacter pour toute demande d'information supplémentaire. Votre satisfaction est notre priorité !<br>  </p>
+            
+            <h2 class="titre">Formulaire de contact :<br></h2>
+            <div class="form-group">
+                <label for="user_name"></label><input type="text" id="user_name" name="user_name" placeholder="First Name">
             </div>
-            <div id="page-mask"></div>
-        `;
+            <div class="form-group">
+                <label for="user_Fname"></label><input type="text" id="user_Fname" name="user_Fname" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label for="user_email"></label><input type="text" id="user_email" name="user_email" placeholder="example@email.com">
+            </div>
+            <div class="form-group">
+                <label for="demande"></label>
+                <textarea cols="50" rows="10" class="translatable" type="text" id="demande" name="demande" placeholder="Détail de la demande"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="spectatorForm" id="login" class="translatable" data-translation-key="connect">Envoyer</button>
+            </div>
+        </div>
+    </div>
+    <div id="page-mask"></div>
+`;
+
 
     /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
