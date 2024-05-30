@@ -8,8 +8,8 @@ if (isset($_POST['user_name']) && isset($_POST['user_Fname']) && isset($_POST['u
     $demande = $_POST['demande'];
 
     $servername = "localhost";
-    $username = "root"; // Replace with your database username
-    $password = ""; // Replace with your database password
+    $username = "root";
+    $password = "";
     $dbname = "app_g10e";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,7 +19,7 @@ if (isset($_POST['user_name']) && isset($_POST['user_Fname']) && isset($_POST['u
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO contact_form (user_name, user_Fname, user_email, demande) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO contact_form (firstName, surname, email, msg) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $userName, $userFname, $userEmail, $demande);
 
     if ($stmt->execute()) {

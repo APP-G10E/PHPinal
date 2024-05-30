@@ -155,11 +155,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 <textarea cols="50" rows="10" class="translatable" type="text" id="demande" name="demande" placeholder="Détail de la demande"></textarea>
             </div>
             <div class="form-group">
-                <button type="submit" name="spectatorForm" id="login" class="translatable" data-translation-key="connect">Envoyer</button>
+                <button type="submit" name="spectatorForm" id="footerSend" class="translatable" data-translation-key="connect">Envoyer</button>
             </div>
         </div>
     </div>
     <div id="page-mask"></div>
+    <script src="../Controller/contact_handler.js"></script>
 `;
 
 

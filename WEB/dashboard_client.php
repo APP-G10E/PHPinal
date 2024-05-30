@@ -50,12 +50,10 @@ include '../Styles/head.php';
 
 <body>
 <div id="spectateur-container">
-    <div class="translatable" data-translation-key="spectateur" id="spectateur"></div>
+    <div class="translatable" data-translation-key="spectator" id="spectateur"></div>
 </div>
 <div id="body-container">
-    <div id="festival-banner-container">
-        <img id="selected-festival" class="center-column" src="/Assets/WLG.png" alt="Festival sélectionné">
-    </div>
+    <div id="festival-banner-container"></div>
 
     <div id="festival-info-container" class="center-column">
         <div id="festival-recherche-container">
@@ -92,7 +90,7 @@ include '../Styles/head.php';
         </div>
     </div>
 </div>
-<script src="../Controller/sensor_list.js"></script>
+<script src="../Controller/dashboard_client.js"></script>
 </body>
 
 <?php

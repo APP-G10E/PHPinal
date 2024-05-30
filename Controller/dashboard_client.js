@@ -1,6 +1,7 @@
 document.querySelector('#festival-recherche').addEventListener('input', function () {
     const festivalName = this.value;
-    let lang = localStorage.getItem('lang');
+    const urlParams = new URLSearchParams(window.location.search);
+    let lang = urlParams.get('lang');
 
     let translations = {
         "en": {
@@ -11,7 +12,9 @@ document.querySelector('#festival-recherche').addEventListener('input', function
             "volumeAvantDroite": "Front volume (right)",
             "volumeAvantGauche": "Front volume (left)",
             "volumeGauche": "Left volume",
-            "volumeDroite": "Right volume"
+            "volumeDroite": "Right volume",
+            "monterSon": "Increase volume",
+            "baisserSon": "Decrease volume"
         },
         "fr": {
             "volumeArriere": "Volume à l'arrière",
@@ -21,7 +24,9 @@ document.querySelector('#festival-recherche').addEventListener('input', function
             "volumeAvantDroite": "Volume à l'avant (droite)",
             "volumeAvantGauche": "Volume à l'avant (gauche)",
             "volumeGauche": "Volume à gauche",
-            "volumeDroite": "Volume à droite"
+            "volumeDroite": "Volume à droite",
+            "monterSon": "Monter le son",
+            "baisserSon": "Baisser le son"
         },
         "cnko": {
             "volumeArriere": "뒤 음량",
@@ -31,7 +36,9 @@ document.querySelector('#festival-recherche').addEventListener('input', function
             "volumeAvantDroite": "앞 (오른쪽) 음량",
             "volumeAvantGauche": "앞 (왼쪽) 음량",
             "volumeGauche": "왼쪽 음량",
-            "volumeDroite": "오른쪽 음량"
+            "volumeDroite": "오른쪽 음량",
+            "monterSon": "소리 높이기",
+            "baisserSon": "소리 줄이기"
         }
     };
 
@@ -45,51 +52,59 @@ document.querySelector('#festival-recherche').addEventListener('input', function
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
         if (this.status === 200) {
-            const sensors = JSON.parse(this.responseText);
+            const response = JSON.parse(this.responseText);
+            const sensors = response.sensors;
+            const imgpath = response.imgpath;
+            console.log("Chemin vers l'image du festival: ", imgpath);
             console.log("Capteurs récupérés: ", sensors);
+
+            document.getElementById('festival-banner-container').innerHTML = '<img class="center-column" src="' + imgpath + '" alt="Festival image" />';
 
             let sensorContainer = document.querySelector('#sensor-elements-container');
             sensorContainer.innerHTML = '';
 
             sensors.forEach(function (sensor) {
                 console.log("L'attribut sensor contient: ", sensor)
-                let sensorSoundDensity = sensor.currentSoundDensity;
+                let sensorSoundDensity = parseInt(sensor.currentSoundDensity);
                 console.log("La densité sonore est de: ", sensorSoundDensity)
-                let sensorLatitude = sensor.latitude;
+                let sensorLatitude = parseInt(sensor.latitude);
                 console.log("La latitude est de: ", sensorLatitude)
-                let sensorLongitude = sensor.longitude;
+                let sensorLongitude = parseInt(sensor.longitude);
                 console.log("La longitude est de: ", sensorLongitude)
                 let sensorElement = document.createElement('div');
                 sensorElement.className = 'sensor-element';
 
                 let positionKey = 'volume';
                 if (sensorLatitude === 1) {
-                    positionKey += 'Avant';
+                    if (sensorLongitude === -1) {
+                        positionKey += 'AvantGauche';
+                    } else if (sensorLongitude === 1) {
+                        positionKey += 'AvantDroite';
+                    } else {
+                        positionKey += 'Avant';
+                    }
                 } else if (sensorLatitude === -1) {
-                    positionKey += 'Arriere';
-                } else if (sensorLatitude === 0) {
-                    if (sensorLongitude === 1) {
-                        positionKey = 'volumeDroite';
-                    } else if (sensorLongitude === -1) {
-                        positionKey = 'volumeGauche';
+                    if (sensorLongitude === -1) {
+                        positionKey += 'ArriereGauche';
+                    } else if (sensorLongitude === 1) {
+                        positionKey += 'ArriereDroite';
+                    } else {
+                        positionKey += 'Arriere';
                     }
                 } else {
-                    if (sensorLongitude === 1) {
-                        positionKey += 'Droite';
-                    } else if (sensorLongitude === -1) {
+                    if (sensorLongitude === -1) {
                         positionKey += 'Gauche';
+                    } else if (sensorLongitude === 1) {
+                        positionKey += 'Droite';
                     }
                 }
 
-                let translatedPosition = translations[lang][positionKey];
-
-                console.log("positionKey", positionKey);
                 let avisVolume = document.createElement('div');
                 avisVolume.className = 'avis-volume';
 
                 let captPosition = document.createElement('p');
                 captPosition.className = 'traductible capt-position';
-                captPosition.setAttribute('data-translation-key', positionKey);
+                captPosition.innerText = translations[lang][positionKey];
                 avisVolume.appendChild(captPosition);
 
                 let voteButtonsContainer = document.createElement('div');
@@ -97,12 +112,12 @@ document.querySelector('#festival-recherche').addEventListener('input', function
 
                 let monterSon = document.createElement('div');
                 monterSon.className = 'avis-son traductible monter-son';
-                monterSon.setAttribute('data-translation-key', 'monterSon');
+                monterSon.innerText = translations[lang]["monterSon"];
                 voteButtonsContainer.appendChild(monterSon);
 
                 let baisserSon = document.createElement('div');
                 baisserSon.className = 'avis-son traductible baisser-son';
-                baisserSon.setAttribute('data-translation-key', 'baisserSon');
+                baisserSon.innerText = translations[lang]["baisserSon"];
                 voteButtonsContainer.appendChild(baisserSon);
 
                 avisVolume.appendChild(voteButtonsContainer);
@@ -113,9 +128,11 @@ document.querySelector('#festival-recherche').addEventListener('input', function
 
                 let soundColor = 'soundwhite';
                 if (sensorSoundDensity > 100) {
-                    soundColor = 'soundred';
+                    soundLevel.style.color = '#f73e3e';
                 } else if (sensorSoundDensity < 80) {
-                    soundColor = 'soundgreen';
+                    soundLevel.style.color = '#90ee90';
+                } else {
+                    soundLevel.style.color = '#ffffff';
                 }
 
                 soundLevel.innerHTML = '<div class="volume ' + soundColor + '"><p>' + sensorSoundDensity + '</p></div><div class="db"><p>dB</p></div>';
