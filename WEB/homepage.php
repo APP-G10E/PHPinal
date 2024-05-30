@@ -22,7 +22,9 @@ include '../Styles/head.php';
                 </div>
             </div>
         </div>
+        <a href="sign_up.php">
         <div class="translatable right-header-button" id="header-subscribe" data-translation-key="subscribe"></div>
+            </a>
         <a href="login.php">
             <div class="translatable right-header-button" id="header-login" data-translation-key="connection"></div>
         </a>
