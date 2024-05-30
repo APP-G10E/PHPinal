@@ -1,0 +1,40 @@
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121721;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 10px; /* Add border-radius */
+    overflow: hidden; /* Ensure border-radius applies correctly */
+    color: black;
+}
+
+thead th {
+    background-color: #29334a;
+    padding: 10px;
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+    font-weight: bold;
+}
+
+tbody td {
+    padding: 10px;
+    background-color: white;
+}
+
+tbody td:first-child {
+}
+
+tbody td:last-child {
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}

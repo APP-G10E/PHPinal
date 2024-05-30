@@ -8,13 +8,10 @@ include '../Styles/head.php';
 ?>
 
 <script src="../Controller/common.js"></script>
-
 <header>
-
     <div id="left-side-header">
         <img src="../Assets/Champion.png" id="logo-header" alt="Logo Champions">
     </div>
-
     <div id="right-side-header">
         <div id="lang-select">
             <div class="dropdown">
@@ -25,15 +22,16 @@ include '../Styles/head.php';
                 </div>
             </div>
         </div>
+        <a href="sign_up.php">
         <div class="translatable right-header-button" id="header-subscribe" data-translation-key="subscribe"></div>
-        <div class="translatable right-header-button" id="header-login" data-translation-key="connection"></div>
+            </a>
+        <a href="login.php">
+            <div class="translatable right-header-button" id="header-login" data-translation-key="connection"></div>
+        </a>
     </div>
 </header>
 
-
 <body>
-
-
 <section>
     <div class="id">
         <img src="../Assets/Logo_high_res_center.png" alt="logo" id="img2">
@@ -65,22 +63,100 @@ include '../Styles/head.php';
     <div class="image-container">
         <div class="featured-festivals"><strong class="translatable" data-translation-key="featuredFestivals"></strong></div>
         <br></br>
-        <div class="partner-festivals-list translatable" data-translation-key="partnerFestivalsList"></div>
+        <div class="partner-festivals-list translatable" data-translation-key="partnerFestivalsList" onclick="showFestivalList()"></div>
     </div>
     <br></br>
 
-
+    <!-- Carrousel d'images -->
     <div class="image-list">
-        <a target="_blank" href="https://www.solidays.com/"><img src="../Assets/soli.jpeg" alt="solidays"
-                                                                 class="image-item"></a>
-        <a target="_blank" href="https://www.welovegreen.fr/"><img src="../Assets/WLG.png" alt="wlg"
-                                                                   class="image-item"></a>
-        <a target="_blank" href="https://hellfest.fr/"><img src="../Assets/hell.jpg" alt="Hellfest"
-                                                            class="image-item"></a>
-        <a target="_blank" href="https://lesardentes.be/"><img src="../Assets/arde.jpg" alt="arde"
-                                                               class="image-item"></a>
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "app_g10e";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT `IMG-PATH` FROM festival WHERE `IMG-PATH` IS NOT NULL";
+        $result = $conn->query($sql);
+
+        $images = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if (!empty($row['IMG-PATH'])) {
+                    $images[] = $row['IMG-PATH'];
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        ?>
+        <?php if (!empty($images)) : ?>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <?php foreach ($images as $imagePath) : ?>
+                        <div class="carousel-slide">
+                            <img src="<?php echo $imagePath; ?>">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="carousel-buttons">
+                    <button onclick="prevImage()">&#10094;</button>
+                    <button onclick="nextImage()">&#10095;</button>
+                </div>
+            </div>
+        <?php else : ?>
+            <p> </p>
+        <?php endif; ?>
     </div>
 </main>
+<div id="festival-popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hideFestivalList()">&times;</span>
+        <h3>Festivals</h3>
+        <div class="festival-table">
+            <div class="table-header">
+                <div class="cell">Name</div>
+                <div class="cell">Begin Time</div>
+                <div class="cell">End Time</div>
+                <div class="cell">Ticket Price</div>
+            </div>
+            <div class="table-body">
+                <?php
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT festivalName, beginTime, endTime, ticketPrice FROM festival";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<div class='table-row'>";
+                        echo "<div class='cell'>" . htmlspecialchars($row['festivalName']) . "</div>";
+                        echo "<div class='cell'>" . $row['beginTime'] . "</div>";
+                        echo "<div class='cell'>" . $row['endTime'] . "</div>";
+                        echo "<div class='cell'>" . $row['ticketPrice'] . "</div>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<div class='table-row'><div class='cell' colspan='4'>Aucun festival disponible.</div></div>";
+                }
+                $conn->close();
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 </body>
 <br></br>
 <br></br>
@@ -92,4 +168,33 @@ include '../Styles/footer.php';
 </html>
 
 <script src="../Controller/lang-select.js"></script>
-<script src="../Controller/popups.js"></script>
+
+<script>
+    let currentIndex = 0;
+    const slidesToShow = 3;
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const totalSlides = slides.length;
+
+    function updateCarousel() {
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.style.transform = 'translateX(' + (-currentIndex * slideWidth) + 'px)';
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + slidesToShow) % totalSlides;
+        updateCarousel();
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - slidesToShow + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+    function showFestivalList() {
+        document.getElementById("festival-popup").style.display = "block";
+    }
+
+    function hideFestivalList() {
+        document.getElementById("festival-popup").style.display = "none";
+    }
+</script>
