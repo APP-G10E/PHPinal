@@ -1,5 +1,39 @@
 document.querySelector('#festival-recherche').addEventListener('input', function () {
     const festivalName = this.value;
+    let lang = localStorage.getItem('lang');
+
+    let translations = {
+        "en": {
+            "volumeArriere": "Back volume",
+            "volumeArriereDroite": "Back volume (right)",
+            "volumeArriereGauche": "Back volume (left)",
+            "volumeAvant": "Front volume",
+            "volumeAvantDroite": "Front volume (right)",
+            "volumeAvantGauche": "Front volume (left)",
+            "volumeGauche": "Left volume",
+            "volumeDroite": "Right volume"
+        },
+        "fr": {
+            "volumeArriere": "Volume à l'arrière",
+            "volumeArriereDroite": "Volume à l'arrière (droite)",
+            "volumeArriereGauche": "Volume à l'arrière (gauche)",
+            "volumeAvant": "Volume à l'avant",
+            "volumeAvantDroite": "Volume à l'avant (droite)",
+            "volumeAvantGauche": "Volume à l'avant (gauche)",
+            "volumeGauche": "Volume à gauche",
+            "volumeDroite": "Volume à droite"
+        },
+        "cnko": {
+            "volumeArriere": "뒤 음량",
+            "volumeArriereDroite": "뒤 (오른쪽) 음량",
+            "volumeArriereGauche": "뒤 (왼쪽) 음량",
+            "volumeAvant": "앞 음량",
+            "volumeAvantDroite": "앞 (오른쪽) 음량",
+            "volumeAvantGauche": "앞 (왼쪽) 음량",
+            "volumeGauche": "왼쪽 음량",
+            "volumeDroite": "오른쪽 음량"
+        }
+    };
 
     if (!festivalName) {
         console.log('Input is empty');
@@ -46,6 +80,8 @@ document.querySelector('#festival-recherche').addEventListener('input', function
                         positionKey += 'Gauche';
                     }
                 }
+
+                let translatedPosition = translations[lang][positionKey];
 
                 console.log("positionKey", positionKey);
                 let avisVolume = document.createElement('div');
