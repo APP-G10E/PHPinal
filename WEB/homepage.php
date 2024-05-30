@@ -8,7 +8,6 @@ include '../Styles/head.php';
 ?>
 
 <script src="../Controller/common.js"></script>
-
 <header>
     <div id="left-side-header">
         <img src="../Assets/Champion.png" id="logo-header" alt="Logo Champions">
@@ -24,7 +23,9 @@ include '../Styles/head.php';
             </div>
         </div>
         <div class="translatable right-header-button" id="header-subscribe" data-translation-key="subscribe"></div>
-        <div class="translatable right-header-button" id="header-login" data-translation-key="connection"></div>
+        <a href="login.php">
+            <div class="translatable right-header-button" id="header-login" data-translation-key="connection"></div>
+        </a>
     </div>
 </header>
 
@@ -107,7 +108,7 @@ include '../Styles/head.php';
                 </div>
             </div>
         <?php else : ?>
-            <p>Aucune image disponible.</p>
+            <p> </p>
         <?php endif; ?>
     </div>
 </main>
