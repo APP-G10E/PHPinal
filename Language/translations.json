@@ -126,11 +126,13 @@
         "partnerFestivalsList": "List of festivals in partnership",
         "go_to_login": "Go to login",
         "footerRetour": "X",
-        "hello": "Hello",
         "selectionnerFestival": "Select a festival",
         "cnko": "Chinese Korean",
         "fr": "French",
-        "en": "English"
+        "en": "English",
+        "hello": "Hello,",
+        "updateProfileButton": "Update",
+        "editProfile": "Edit profile"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -191,10 +193,13 @@
         "partnerFestivalsList": "Liste des festivals en partenariat",
         "go_to_login": "Aller à la connexion",
         "footerRetour" : "X",
-        "hello": "Bonjour",
         "selectionnerFestival": "Sélectionnez un festival",
         "cnko": "Chinois Coréen",
         "fr": "Français",
-        "en": "Anglais"
+        "en": "Anglais",
+        "hello": "Bonjour,",
+        "editProfile": "Modifier le profil",
+        "updateProfileButton": "Mettre à jour"
+        
     }
 }
