@@ -59,6 +59,7 @@ document.querySelector('#festival-recherche').addEventListener('input', function
             console.log("Capteurs récupérés: ", sensors);
 
             document.getElementById('festival-banner-container').innerHTML = '<img class="center-column" src="' + imgpath + '" alt="Festival image" />';
+            document.getElementById('festival-banner-container').style.minHeight = 'fit-content';
 
             let sensorContainer = document.querySelector('#sensor-elements-container');
             sensorContainer.innerHTML = '';

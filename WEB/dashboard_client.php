@@ -103,11 +103,11 @@ $conn->close();
                     <p>⭕</p>
                 </div>
                 <div class="festival-populaire" id="festival-populaire-3">
-                    <p>Lollapalooza</p>
+                    <p>Les Ardentes</p>
                     <p>⭕</p>
                 </div>
                 <div class="festival-populaire" id="festival-populaire-4">
-                    <p>Garo Rock</p>
+                    <p>Hellfest</p>
                     <p>🟢</p>
                 </div>
             </div>
