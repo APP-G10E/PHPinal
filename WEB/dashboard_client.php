@@ -21,14 +21,15 @@ $customerId = $conn->real_escape_string($_GET['customerId']);
 
 $sql = "SELECT firstName FROM customers WHERE customerId = '$customerId'";
 $result = $conn->query($sql);
+$user = $result->fetch_assoc();
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $firstName = $row['firstName'];
-} else {
-    echo "No customer found with this ID";
-    exit;
-}
+
+$sql = "SELECT surname, firstName, phoneNumber FROM customers WHERE customerId = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $customerId);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 
 $conn->close();
 
@@ -78,11 +79,8 @@ $conn->close();
 
 <body>
 <div id="spectateur-container">
-    <div class="translatable bjrSpectateur" data-translation-key="hello"><div class="bjrSpectateur" id="bjrSpectateur"></div></div>
-    <script>
-        console.log('<?php echo $firstName; ?>');
-        document.getElementById('bjrSpectateur').innerHTML = '<?php echo $firstName; ?>';
-    </script>
+    <div class="translatable bjrSpectateur" data-translation-key="hello"> </div><div class="bjrSpectateur" id="bjrSpectateur"> <?php echo htmlspecialchars($user['firstName']); ?></div>
+
 </div>
 <div id="body-container">
     <div id="festival-banner-container"></div>
