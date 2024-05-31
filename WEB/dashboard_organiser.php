@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/Assets/Favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/Assets/Favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/Assets/Favicon/favicon-16x16.png">
+        <link rel="manifest" href="/Assets/Favicon/site.webmanifest">
+
+        <link rel="stylesheet" href="/CSS/global.css">
+        <link rel="stylesheet" href="/CSS/dashboard_client.css">
+
+        <script src="../Controller/popups.js"></script>
+    </head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
     <style>
         body {
@@ -39,17 +50,36 @@
             width: 100%;
             max-width: 1200px;
             padding: 20px;
-            justify-content: center;
-            justify-items: center;
+            margin-left: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .tab-content {
             display: none;
         }
         .tab-content.active {
-            display: block;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
         }
+        .form-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        .form-container > div {
+            background-color: #1d1f27;
+            padding: 30px;
+            border-radius: 12px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
     </style>
 </head>
+
+
 <body>
 <div class="navbar">
     <a href="#" data-tab="userList">Liste des utilisateurs</a>
