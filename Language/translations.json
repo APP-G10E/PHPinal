@@ -59,7 +59,7 @@
         "featuredFestivals": "주목받는 음악제",
         "partnerFestivalsList": "제안에 포함된 합작 음악제 목록",
         "footerRetour" : "X",
-        "hello": "안녕하세요"
+        "hello": "안녕하세요,"
     },
     "en": {
         "resend_code": "Resend the code",
@@ -120,7 +120,7 @@
         "partnerFestivalsList": "List of festivals in partnership",
         "go_to_login": "Go to login",
         "footerRetour": "X",
-        "hello": "Hello"
+        "hello": "Hello,"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -181,6 +181,6 @@
         "partnerFestivalsList": "Liste des festivals en partenariat",
         "go_to_login": "Aller à la connexion",
         "footerRetour" : "X",
-        "hello": "Bonjour"
+        "hello": "Bonjour,"
     }
 }

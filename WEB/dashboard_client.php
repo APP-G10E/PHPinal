@@ -29,7 +29,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $customerId);
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc();
+
 
 $conn->close();
 
@@ -79,8 +79,7 @@ $conn->close();
 
 <body>
 <div id="spectateur-container">
-    <div class="translatable bjrSpectateur" data-translation-key="hello"> </div><div class="bjrSpectateur" id="bjrSpectateur"> <?php echo htmlspecialchars($user['firstName']); ?></div>
-
+    <div class="translatable bjrSpectateur" data-translation-key="hello"></div> <div class="bjrSpectateur" id="bjrSpectateur"> <?php echo '&nbsp;'.htmlspecialchars($user['firstName']); ?></div>
 </div>
 <div id="body-container">
     <div id="festival-banner-container"></div>
