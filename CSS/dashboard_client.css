@@ -93,7 +93,7 @@ body div {
     padding-bottom: 100px;
 }
 
-#spectateur{
+.bjrSpectateur{
     color: white;
     font-family: Inter-Bold, serif;
     padding-top: 150px;
@@ -117,6 +117,7 @@ body div {
 
 #festival-banner-container{
     border-radius: 60px;
+    max-height: 68vh;
 }
 
 #festival-info-container{
@@ -226,7 +227,7 @@ body div {
 }
 
 #sensor-elements-container{
-    max-height: calc((16vh + 21px) * 3);
+    height: calc((16vh + 21px) * 3);
     overflow-y: scroll;
     overflow-x: hidden;
     width: 550px;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 11:27 AM
+-- Generation Time: May 30, 2024 at 01:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `app_g10e`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `contactNum` int(11) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -88,7 +102,7 @@ CREATE TABLE `organisers` (
   `firstName` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(255) DEFAULT NULL,
-  `raison` varchar(255) DEFAULT NULL,
+  `reason` varchar(255) DEFAULT NULL,
   `verified` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -105,6 +119,25 @@ CREATE TABLE `sensor` (
   `longitude` double DEFAULT NULL,
   `currentSoundDensity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `super`
+--
+
+CREATE TABLE `super` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` varchar(255) NOT NULL,
+  `admin_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `super`
+--
+
+INSERT INTO `super` (`admin_id`, `admin_name`, `admin_password`) VALUES
+(1, 'admin', '$2y$10$PvplRi/icaDBSfY8gNs6ZO65UxOOinQYBLhppknQAbIbQo4cGO0ca');
 
 -- --------------------------------------------------------
 
@@ -134,6 +167,12 @@ CREATE TABLE `votingparties` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`contactNum`);
 
 --
 -- Indexes for table `customerfestivals`
@@ -177,6 +216,12 @@ ALTER TABLE `sensor`
   ADD KEY `festivalId` (`festivalId`);
 
 --
+-- Indexes for table `super`
+--
+ALTER TABLE `super`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexes for table `verifier`
 --
 ALTER TABLE `verifier`
@@ -188,6 +233,22 @@ ALTER TABLE `verifier`
 ALTER TABLE `votingparties`
   ADD PRIMARY KEY (`votingPartyId`),
   ADD KEY `FestivalId` (`FestivalId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `contactNum` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `super`
+--
+ALTER TABLE `super`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
