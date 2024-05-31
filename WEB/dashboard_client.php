@@ -147,7 +147,7 @@ include '../Styles/footer.php';
 <div id="festival-popup" class="popup">
     <div class="popup-content">
         <span class="close" onclick="hideFestivalList()">&times;</span>
-        <h3>Festivals</h3>
+        <h3 data-translation-key="editProfile" class="translatable"></h3>
         <form class="festival-table" method="post" action="update_profile.php" class="form-container">
 
                 <input type="hidden" name="customerId" value="<?php echo htmlspecialchars($customerId); ?>">
