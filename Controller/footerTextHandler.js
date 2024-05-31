@@ -61,7 +61,7 @@ saveButton.addEventListener("click", async () => {
     console.log("Updated JSON:", JSON.stringify(jsonData, null, 2));
 
     try {
-        const result = await updateJsonData('update-json.php', jsonData);
+        const result = await updateJsonData('../Controller/update-json.php', jsonData);
         if (result.status === 'success') {
             alert('JSON file updated successfully');
         } else {
@@ -74,7 +74,7 @@ saveButton.addEventListener("click", async () => {
 });
 
 // Fetch JSON data from the server and load the initial content
-fetchJsonData('get-json.php')
+fetchJsonData('../Controller/get-json.php')
     .then(data => {
         jsonData = data;
         loadHtmlContent();

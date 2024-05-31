@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const footerPopUpProtectionDonnees = `
             <div id="footer-truc" class="pop-up">
-                <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
                 <div class="pop-up-content">
                     <h2 class="titre">Qu'est-ce que la charte des données personnelles ?</h2>
                     <p>En France, la loi Informatique et Libertés règlemente la collecte et le traitement des données personnelles, relatives à des personnes humaines. Créée en 1978, elle continue d’évoluer, ses dernières modifications datent du 6 août 2004.
@@ -26,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     La loi Informatique et Liberté constitue le socle de la politique interne de l’entreprise vis-à-vis de la protection des données personnelles, à partir duquel se construit le contenu de la charte des données personnelles propre à l’entreprise.</p>
                 </div>
+                <span class="close">&times;</span>
             </div>
             <div id="page-mask"></div>
             <script src="/Controller/lang-select.js"></script>
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const footerPopUpMentionsLegales = `
             <div id="footer-truc" class="pop-up">
-                <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
                 <div class="pop-up-content">
                     <p>Ce site Internet "le Site web" est exploité par Chamπons.
 
@@ -57,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <h2 class="titre">Droit et juridiction</h2>
                     <p>Ce site web a été créé et est exploité conformément aux lois de la France et les présentes conditions seront régies et interprétées conformément à ces lois. Pour trancher tout litige relatif à ce Site et aux présentes conditions, les lois de la France s'appliqueront et les tribunaux de la France auront compétence exclusive.</p>
                 </div>
+                <span class="close">&times;</span>
             </div>
             <div id="page-mask"></div>
         `;
@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const footerPopUpCGV = `
             <div id="footer-truc" class="pop-up">
-                <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
                 <div class="pop-up-content">
                     <h2 class="titre">Conditions Générales de Vente (CGV) :</h2>
                     <p>
@@ -102,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     4. Modification des Conditions<br>
                     Nous nous réservons le droit de modifier à tout moment les présentes conditions générales d'utilisation. Toute modification sera publiée sur cette page et entrera en vigueur dès sa publication. En continuant à utiliser ce site après la publication des modifications, vous acceptez les conditions mises à jour.</p>
                     </div>
+                    <span class="close">&times;</span>
             </div>
             <div id="page-mask"></div>
         `;
@@ -114,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const footerPopUpContactUs = `
     <div id="footer-truc" class="pop-up">
-        <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
         <div class="pop-up-content">
             <h2 class="titre">Nous contacer :</h2>
             <p>Nous sommes là pour répondre à vos questions, écouter vos suggestions ou prendre en compte vos préoccupations. N'hésitez pas à nous contacter via l'un des moyens suivants : <br>
@@ -158,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button type="submit" name="spectatorForm" id="footerSend" class="translatable" data-translation-key="connect">Envoyer</button>
             </div>
         </div>
+        <span class="close">&times;</span>
     </div>
     <div id="page-mask"></div>
     <script src="../Controller/contact_handler.js"></script>
@@ -199,7 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const footerPopUpFAQ = `
             <div id="footer-truc" class="pop-up">
-                <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
                 <div class="pop-up-content">
                     <h2 class="titre">Foire Aux Questions (FAQ) - Billets d'Accès au Festival</h2>
                     <p>Bienvenue dans notre section FAQ dédiée à l'achat de billets d'accès à notre festival. Si vous avez des questions spécifiques qui ne sont pas abordées ici, n'hésitez pas à nous contacter directement. <br><br>
@@ -228,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <strong class="titre">8. Comment puis-je contacter le service client en cas de problème avec mes billets ?<br></strong>
                     Si vous rencontrez des problèmes avec vos billets ou si vous avez des questions supplémentaires, vous pouvez contacter notre service clientèle par email à Chamπons@gmail.com ou par téléphone au +33 1 95 83 57 35.<br><br></p>
                 </div>
+                <span class="close">&times;</span>
             </div>
             <div id="page-mask"></div>
         `;
@@ -240,7 +240,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const popUpFestivalsPartenaires = `
             <div id="footer-truc" class="pop-up">
-                <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
                 <div class="pop-up-content">
                     <h2 class="titre">Qu'est-ce que la charte des données personnelles ?</h2>
                     <p>En France, la loi Informatique et Libertés règlemente la collecte et le traitement des données personnelles, relatives à des personnes humaines. Créée en 1978, elle continue d’évoluer, ses dernières modifications datent du 6 août 2004.
@@ -258,6 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     La loi Informatique et Liberté constitue le socle de la politique interne de l’entreprise vis-à-vis de la protection des données personnelles, à partir duquel se construit le contenu de la charte des données personnelles propre à l’entreprise.</p>
                 </div>
+                <span class="close">&times;</span>
             </div>
             <div id="page-mask"></div>
             <script src="/Controller/lang-select.js"></script>
@@ -271,7 +271,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const popUpRisquesAuditifs = `
             <div id="footer-truc" class="pop-up">
-                <div class="pop-up-retour traductible" data-translation-key="footerRetour"></div>
                 <div class="pop-up-content">
                     <h2 class="titre">Qu'est-ce que la charte des données personnelles ?</h2>
                     <p>En France, la loi Informatique et Libertés règlemente la collecte et le traitement des données personnelles, relatives à des personnes humaines. Créée en 1978, elle continue d’évoluer, ses dernières modifications datent du 6 août 2004.
@@ -289,6 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     La loi Informatique et Liberté constitue le socle de la politique interne de l’entreprise vis-à-vis de la protection des données personnelles, à partir duquel se construit le contenu de la charte des données personnelles propre à l’entreprise.</p>
                 </div>
+                <span class="close">&times;</span>
             </div>
             <div id="page-mask"></div>
             <script src="/Controller/lang-select.js"></script>
@@ -347,31 +347,34 @@ document.addEventListener('DOMContentLoaded', function () {
     function popUp(footerPopUp) {
         document.body.insertAdjacentHTML('beforeend', footerPopUp);
 
-        const footerRetourElement = document.querySelector('.pop-up-retour');
-        footerRetourElement.addEventListener('click', function () {
-            document.querySelectorAll(".pop-up").forEach(el => el.remove());
-            document.getElementById('page-mask').remove();
-        });
-
         document.getElementById('page-mask').addEventListener('click', function () {
-            document.querySelectorAll(".pop-up").forEach(el => el.remove());
-            document.getElementById('page-mask').remove();
+            closePopUp();
         });
 
         document.addEventListener('keydown', function (e) {
             if (e.key === "Escape") {
-                document.querySelectorAll(".pop-up").forEach(el => el.remove());
-                document.getElementById('page-mask').remove();
+                closePopUp();
+            }
+        });
+
+        document.body.addEventListener('click', function (event) {
+            if (event.target.matches('.close')) {
+                closePopUp();
             }
         });
     }
 });
 
-function cookies() {
-        const cookiesResponse = localStorage.getItem('cookiesResponse');
+function closePopUp() {
+    document.querySelectorAll(".pop-up").forEach(el => el.remove());
+    document.getElementById('page-mask').remove();
+}
 
-        if (!cookiesResponse || cookiesResponse) {
-            const cookieConsentHTML = `
+function cookies() {
+    const cookiesResponse = localStorage.getItem('cookiesResponse');
+
+    if (!cookiesResponse || cookiesResponse) {
+        const cookieConsentHTML = `
             <div id="cookieConsent" class="cookie-consent">
                 <div id="cookie-content">
                     <h3>Champions utilise des cookies pour faire fonctionner ce site</h3>
@@ -396,31 +399,31 @@ function cookies() {
             <div id="page-mask"></div>
         `;
 
-            document.body.insertAdjacentHTML('beforeend', cookieConsentHTML);
+        document.body.insertAdjacentHTML('beforeend', cookieConsentHTML);
 
-            const cookieConsent = document.getElementById('cookieConsent');
-            const pageMask = document.getElementById('page-mask');
-            const acceptCookiesBtn = document.getElementById('acceptCookies');
-            const refuseCookiesBtn = document.getElementById('refuseCookies');
+        const cookieConsent = document.getElementById('cookieConsent');
+        const pageMask = document.getElementById('page-mask');
+        const acceptCookiesBtn = document.getElementById('acceptCookies');
+        const refuseCookiesBtn = document.getElementById('refuseCookies');
 
-            cookieConsent.style.display = 'block';
+        cookieConsent.style.display = 'block';
 
-            acceptCookiesBtn.addEventListener('click', function () {
-                cookieConsent.style.display = 'none';
-                pageMask.style.display = 'none';
-                document.body.style.overflow = 'visible';
-                localStorage.setItem('cookiesResponse', 'true');
+        acceptCookiesBtn.addEventListener('click', function () {
+            cookieConsent.style.display = 'none';
+            pageMask.style.display = 'none';
+            document.body.style.overflow = 'visible';
+            localStorage.setItem('cookiesResponse', 'true');
 
-                console.log("Choix des cookies", cookiesResponse);
-            });
+            console.log("Choix des cookies", cookiesResponse);
+        });
 
-            refuseCookiesBtn.addEventListener('click', function () {
-                cookieConsent.style.display = 'none';
-                pageMask.style.display = 'none';
-                document.body.style.overflow = 'visible';
-                localStorage.setItem('cookiesResponse', 'false');
+        refuseCookiesBtn.addEventListener('click', function () {
+            cookieConsent.style.display = 'none';
+            pageMask.style.display = 'none';
+            document.body.style.overflow = 'visible';
+            localStorage.setItem('cookiesResponse', 'false');
 
-                console.log("Choix des cookies", cookiesResponse);
-            });
-        }
+            console.log("Choix des cookies", cookiesResponse);
+        });
     }
+}

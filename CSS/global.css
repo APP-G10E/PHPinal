@@ -430,12 +430,19 @@ Pop Up
 .pop-up-content {
     overflow-y: scroll;
     overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     max-height: 60vh;
     width: 60vw;
     color: white;
     font-size: 2.5vh;
     font-family: Inter-Regular, serif;
     padding-right: 5vw;
+}
+
+.pop-up-content::-webkit-scrollbar {
+    background: transparent;
+    width: 0;
 }
 
 .titre {
@@ -488,5 +495,15 @@ Pop Up
 .translatable,
 a {
     display: inline-block;
+}
+
+.close {
+    color: white;
+    justify-self: flex-end;
+}
+
+.close:hover {
+    color: grey;
+    cursor: pointer;
 }
 
