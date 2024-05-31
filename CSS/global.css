@@ -243,7 +243,7 @@ header div {
     user-select: none;
 }
 
-#header-hi-text {
+.header-hi-text {
     color: white;
     font-family: Inter-Regular, "Noto Serif KR", serif;
     font-size: 1.2vw;
@@ -255,7 +255,7 @@ header div {
     justify-self: right;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     color: #a9a9a9;
     background-color: #2a2e37;
     padding-left: 0.579vw;

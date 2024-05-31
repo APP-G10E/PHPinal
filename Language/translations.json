@@ -58,7 +58,8 @@
         "subscriptionBenefits": "우리의 구독으로 당신은 우리의 합작 음악제에 참가할 수 있습니다\n그들의 전체 기간 동안, 추가 비용없이",
         "featuredFestivals": "주목받는 음악제",
         "partnerFestivalsList": "제안에 포함된 합작 음악제 목록",
-        "footerRetour" : "X"
+        "footerRetour" : "X",
+        "hello": "안녕하세요"
     },
     "en": {
         "resend_code": "Resend the code",
@@ -118,7 +119,8 @@
         "featuredFestivals": "Featured Festivals",
         "partnerFestivalsList": "List of festivals in partnership",
         "go_to_login": "Go to login",
-        "footerRetour" : "X"
+        "footerRetour": "X",
+        "hello": "Hello"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -178,6 +180,7 @@
         "featuredFestivals": "Festivals en vedette",
         "partnerFestivalsList": "Liste des festivals en partenariat",
         "go_to_login": "Aller à la connexion",
-        "footerRetour" : "X"
+        "footerRetour" : "X",
+        "hello": "Bonjour"
     }
 }

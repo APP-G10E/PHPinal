@@ -4,7 +4,35 @@
 <?php
 $page_title = "Home - EventsIT";
 $css_file = "homepage.css";
+$customerId = $_GET['customerId'];
 include '../Styles/head.php';
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "app_g10e";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$customerId = $conn->real_escape_string($_GET['customerId']);
+
+$sql = "SELECT firstName FROM customers WHERE customerId = '$customerId'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $firstName = $row['firstName'];
+} else {
+    echo "No customer found with this ID";
+    exit;
+}
+
+$conn->close();
+
+
 ?>
 
 <head>
@@ -17,7 +45,6 @@ include '../Styles/head.php';
 
     <link rel="stylesheet" href="/CSS/global.css">
     <link rel="stylesheet" href="/CSS/dashboard_client.css">
-
 
     <script src="../Controller/popups.js"></script>
 </head>
@@ -34,7 +61,8 @@ include '../Styles/head.php';
     </div>
 
     <div id="right-side-header">
-        <div class="translatable" id="header-hi-text" data-translation-key="headerHiText"></div>
+        <div class="translatable header-hi-text" data-translation-key="headerHiText"></div>
+        <div class="header-hi-text" id="header-name" data-translation-key="headerName"></div>
         <div id="lang-select">
             <div class="dropdown">
                 <div class="dropbtn"><a id="flag1"></a></div>
@@ -50,7 +78,11 @@ include '../Styles/head.php';
 
 <body>
 <div id="spectateur-container">
-    <div class="translatable" data-translation-key="spectator" id="spectateur"></div>
+    <div class="translatable bjrSpectateur" data-translation-key="hello"><div class="bjrSpectateur" id="bjrSpectateur"></div></div>
+    <script>
+        console.log('<?php echo $firstName; ?>');
+        document.getElementById('bjrSpectateur').innerHTML = '<?php echo $firstName; ?>';
+    </script>
 </div>
 <div id="body-container">
     <div id="festival-banner-container"></div>
