@@ -1,3 +1,9 @@
+/*-*-*-*-*-*-*-*-*-*
+
+Header
+
+-*-*-*-*-*-*-*-*-*-*/
+
 header {
     display: flex;
     justify-content: space-between;
@@ -56,7 +62,11 @@ header div {
     cursor: pointer;
 }
 
+/*-*-*-*-*-*-*-*-*-*
 
+Contenu
+
+-*-*-*-*-*-*-*-*-*-*/
 
 body {
     background-color: #131722;
@@ -334,52 +344,4 @@ body div {
     font-family: Inter-Bold, serif;
     font-size: 3vh;
     margin-left: 0.5vw;
-}
-
-/* Style for form container */
-.form-container {
-    border-radius: 10px;
-    border: 1px solid #ddd; /* Optional: Add a subtle border for modern look */
-    padding: 20px;
-}
-
-/* Style for form labels */
-.form-label {
-    display: block; /* Ensure labels appear on a new line */
-    margin-bottom: 10px; /* Adjust spacing between labels and inputs */
-}
-
-/* Style for form inputs */
-.form-input {
-    margin: 10px 0; /* Adjust vertical spacing between inputs */
-    padding: 10px;
-    border-radius: 5px; /* Round the input borders */
-    border: 1px solid #ddd; /* Optional: Add a subtle border for modern look */
-}
-
-.festival-table {
-    border: none;
-}
-
-/* Style for submit button */
-.form-submit {
-    padding: 10px 20px;
-    border-radius: 5px; /* Round the button borders */
-    border: none; /* Remove default button border */
-    background-color: #007bff; /* Optional: Add background color for modern look */
-    color: #fff; /* Optional: Set text color */
-    cursor: pointer;
-    transition: background-color 0.3s; /* Optional: Add smooth transition effect */
-}
-
-/* Optional: Hover effect for submit button */
-.form-submit:hover {
-    background-color: #0056b3;
-    color: black;
-}
-
-
-/* Style for submit button on hover */
-.form-submit:hover {
-    background-color: #ffffff;
 }

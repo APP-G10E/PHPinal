@@ -98,7 +98,9 @@ $conn->close();
     <div class="translatable bjrSpectateur" data-translation-key="hello"></div> <div class="bjrSpectateur" id="bjrSpectateur"> <?php echo '&nbsp;'.htmlspecialchars($user['firstName']); ?></div>
 </div>
 <div id="body-container">
-    <div id="festival-banner-container"></div>
+    <div id="festival-banner-container">
+        <div class="translatable selectionnerFestival" data-translation-key="selectionnerFestival"></div>
+    </div>
 
     <div id="festival-info-container" class="center-column">
         <div id="festival-recherche-container">
@@ -130,7 +132,9 @@ $conn->close();
 
         <div id="festival-capteurs-container">
             <p class="translatable festival-info-title" data-translation-key="volumeFestival"></p>
-            <div id="sensor-elements-container"></div>
+            <div id="sensor-elements-container">
+                <div class="translatable selectionnerFestival" data-translation-key="selectionnerFestival"></div>
+            </div>
             <p id="risques-son" class="translatable lien-precisions" data-translation-key="risquesSon"></p>
         </div>
     </div>
