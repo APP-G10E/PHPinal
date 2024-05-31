@@ -141,6 +141,8 @@ $conn->close();
             border-radius: 12px;
             width: 300px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-height: 450px;
+            align-content: center;
         }
 
 
