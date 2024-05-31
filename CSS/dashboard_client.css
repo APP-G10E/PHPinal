@@ -1,13 +1,7 @@
-/*-*-*-*-*-*-*-*-*-*
-
-Header
-
--*-*-*-*-*-*-*-*-*-*/
-
-header{
+header {
     display: flex;
     justify-content: space-between;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     max-height: 44px;
 }
 
@@ -22,15 +16,15 @@ header div {
     -ms-user-select: none;
 }
 
-#right-side-header{
+#right-side-header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     max-height: 44px;
 }
 
-#logoHeader{
+#logoHeader {
     height: 44px;
     width: 175px;
     pointer-events: none;
@@ -46,7 +40,7 @@ header div {
     user-select: none;
 }
 
-#log-out{
+#log-out {
     justify-self: right;
     color: #a9a9a9;
     background-color: #2a2e37;
@@ -56,19 +50,15 @@ header div {
     margin-right: 10px;
     border-style: none;
     border-radius: 16px;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     min-height: 44px;
     min-width: 119px;
     cursor: pointer;
 }
 
-/*-*-*-*-*-*-*-*-*-*
 
-Contenu
 
--*-*-*-*-*-*-*-*-*-*/
-
-body{
+body {
     background-color: #131722;
 }
 
@@ -84,40 +74,38 @@ body div {
     -ms-user-select: none;
 }
 
-#spectateur-container{
+#spectateur-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     min-height: 40px;
     padding-bottom: 100px;
 }
 
-.bjrSpectateur{
+.bjrSpectateur {
     color: white;
     font-family: Inter-Bold, serif;
     padding-top: 150px;
     font-size: 2vw;
 }
 
-#body-container{
+#body-container {
     display: flex;
     justify-self: center;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     min-height: 500px;
     margin-bottom: 10vh;
 }
 
-
-
-.center-column{
+.center-column {
     width: 70vw;
 }
 
-#festival-banner-container{
+#festival-banner-container {
     border-radius: 60px;
     border: 1px solid #292e37;
     min-height: 68vh;
@@ -137,14 +125,14 @@ body div {
     justify-self: center;
 }
 
-#festival-info-container{
+#festival-info-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
 }
 
-.festival-info-title{
+.festival-info-title {
     color: white;
     font-family: Inter-Bold, serif;
     font-size: 23px;
@@ -152,7 +140,18 @@ body div {
     overflow: hidden;
 }
 
-#festival-recherche-container{
+.selectionnerFestival {
+    color: #5b5d60;
+    margin-left: 1vw;
+    margin-top: 0.5vh;
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    align-self: center;
+    justify-self: center;
+}
+
+#festival-recherche-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -163,7 +162,7 @@ body div {
     height: 100%;
 }
 
-#festival-recherche{
+#festival-recherche {
     background-color: #292e37;
     font-family: Inter-Light, serif;
     border-radius: 10px;
@@ -175,7 +174,7 @@ body div {
     margin-bottom: 38px;
 }
 
-#festivals-recherches-titre{
+#festivals-recherches-titre {
     color: white;
     font-family: Inter-light, serif;
     font-size: 22px;
@@ -183,12 +182,12 @@ body div {
     overflow: hidden;
 }
 
-#festivals-populaires{
+#festivals-populaires {
     max-height: 489px;
     max-width: 85%;
 }
 
-.festival-populaire{
+.festival-populaire {
     background-color: #292e37;
     height: 45px;
     min-width: fit-content(80%);
@@ -203,13 +202,13 @@ body div {
     align-items: center;
     padding-left: 10px;
     font-size: 110%;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     cursor: pointer;
     white-space: nowrap;
     overflow: clip;
 }
 
-.lien-precisions{
+.lien-precisions {
     color: #3cb9fc;
     margin-left: 1vw;
     margin-top: 0.5vh;
@@ -218,12 +217,12 @@ body div {
     overflow: hidden;
 }
 
-.lien-precisions:hover{
+.lien-precisions:hover {
     color: #2176a3;
     cursor: pointer;
 }
 
-#festival-capteurs-container{
+#festival-capteurs-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -232,18 +231,18 @@ body div {
     max-width: 70%;
     min-width: 50%;
     min-height: 150px;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     height: 100%;
     flex-wrap: nowrap;
 }
 
-@media screen and (orientation:portrait) {
-    #festival-capteurs-container{
+@media screen and (orientation: portrait) {
+    #festival-capteurs-container {
         flex-direction: column;
     }
 }
 
-#sensor-elements-container{
+#sensor-elements-container {
     height: calc((16vh + 21px) * 3);
     overflow-y: scroll;
     overflow-x: hidden;
@@ -253,14 +252,16 @@ body div {
     padding: 20px 20px 0 20px;
     border: 1px solid #292e37;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 #sensor-elements-container::-webkit-scrollbar {
     background: transparent;
-    width: 0px;
+    width: 0;
 }
 
-.sensor-element{
+.sensor-element {
     display: flex;
     background-color: #292e37;
     border-radius: 10px;
@@ -273,22 +274,22 @@ body div {
     overflow: hidden;
 }
 
-.capt-position{
+.capt-position {
     color: white;
     font-family: Inter-Light, serif;
     font-size: 20px;
 }
 
-.vote-buttons-container{
+.vote-buttons-container {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: nowrap;
-    font-family: Inter-Light,serif;
+    font-family: Inter-Light, serif;
     margin-top: 10px;
 }
 
-.avis-son{
+.avis-son {
     background-color: #d4d5d7;
     color: #555656;
     font-family: Inter-Bold, serif;
@@ -307,30 +308,78 @@ body div {
     justify-content: center;
 }
 
-.monter-son{
+.monter-son {
     min-width: 10vw;
 }
 
-.baisser-son{
+.baisser-son {
     min-width: 5vw;
 }
 
-.sound-level{
+.sound-level {
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
     position: relative;
     top: -1.5vh;
     padding-left: 2vw;
-    font-family: Inter-Bold,serif;
+    font-family: Inter-Bold, serif;
     width: fit-content;
     font-size: 6vh;
     color: white;
 }
 
-.db{
+.db {
     color: white;
     font-family: Inter-Bold, serif;
     font-size: 3vh;
     margin-left: 0.5vw;
+}
+
+/* Style for form container */
+.form-container {
+    border-radius: 10px;
+    border: 1px solid #ddd; /* Optional: Add a subtle border for modern look */
+    padding: 20px;
+}
+
+/* Style for form labels */
+.form-label {
+    display: block; /* Ensure labels appear on a new line */
+    margin-bottom: 10px; /* Adjust spacing between labels and inputs */
+}
+
+/* Style for form inputs */
+.form-input {
+    margin: 10px 0; /* Adjust vertical spacing between inputs */
+    padding: 10px;
+    border-radius: 5px; /* Round the input borders */
+    border: 1px solid #ddd; /* Optional: Add a subtle border for modern look */
+}
+
+.festival-table {
+    border: none;
+}
+
+/* Style for submit button */
+.form-submit {
+    padding: 10px 20px;
+    border-radius: 5px; /* Round the button borders */
+    border: none; /* Remove default button border */
+    background-color: #007bff; /* Optional: Add background color for modern look */
+    color: #fff; /* Optional: Set text color */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Optional: Add smooth transition effect */
+}
+
+/* Optional: Hover effect for submit button */
+.form-submit:hover {
+    background-color: #0056b3;
+    color: black;
+}
+
+
+/* Style for submit button on hover */
+.form-submit:hover {
+    background-color: #ffffff;
 }
