@@ -364,12 +364,12 @@ footer {
     fill: #E4405F;
 }
 
-#whatsapp-svg:hover path {
-    fill: #25d366;
+#facebook-svg:hover path {
+    fill: #0d4a8d;
 }
 
-#twitter-svg:hover path {
-    fill: #179cf0;
+#x-svg:hover path {
+    fill: #1c3461;
 }
 
 .footer-truc {
