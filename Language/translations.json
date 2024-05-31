@@ -59,7 +59,11 @@
         "featuredFestivals": "주목받는 음악제",
         "partnerFestivalsList": "제안에 포함된 합작 음악제 목록",
         "footerRetour" : "X",
-        "hello": "안녕하세요"
+        "hello": "안녕하세요",
+        "selectionnerFestival": "음악제 선택",
+        "cnko": "중국어 한국어",
+        "fr": "프랑스어",
+        "en": "영어"
     },
     "en": {
         "resend_code": "Resend the code",
@@ -120,7 +124,11 @@
         "partnerFestivalsList": "List of festivals in partnership",
         "go_to_login": "Go to login",
         "footerRetour": "X",
-        "hello": "Hello"
+        "hello": "Hello",
+        "selectionnerFestival": "Select a festival",
+        "cnko": "Chinese Korean",
+        "fr": "French",
+        "en": "English"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -181,6 +189,10 @@
         "partnerFestivalsList": "Liste des festivals en partenariat",
         "go_to_login": "Aller à la connexion",
         "footerRetour" : "X",
-        "hello": "Bonjour"
+        "hello": "Bonjour",
+        "selectionnerFestival": "Sélectionnez un festival",
+        "cnko": "Chinois Coréen",
+        "fr": "Français",
+        "en": "Anglais"
     }
 }

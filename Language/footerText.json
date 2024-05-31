@@ -1,0 +1,15 @@
+{
+  "cnko": {
+    "htmlCGU": "<p>English HTML 1</p>",
+    "htmlFAQ": "<p>English HTML 2</p>",
+    "htmlMentionLegales": "<p>French HTML 1</p>"
+  },
+  "en": {
+    "html1": "<p>English HTML 1</p>",
+    "html2": "<p>English HTML 2</p>"
+  },
+  "fr": {
+    "html1": "<p>French HTML 1</p>",
+    "html2": "<p>French HTML 2</p>"
+  }
+}

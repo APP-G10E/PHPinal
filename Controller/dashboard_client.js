@@ -58,6 +58,8 @@ document.querySelector('#festival-recherche').addEventListener('input', function
             console.log("Chemin vers l'image du festival: ", imgpath);
             console.log("Capteurs récupérés: ", sensors);
 
+            document.getElementById('sensor-elements-container').style.display = 'block';
+            document.getElementById('festival-banner-container').innerHTML = '';
             document.getElementById('festival-banner-container').innerHTML = '<img class="center-column" src="' + imgpath + '" alt="Festival image" />';
             document.getElementById('festival-banner-container').style.minHeight = 'fit-content';
 

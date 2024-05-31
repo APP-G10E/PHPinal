@@ -163,6 +163,33 @@ document.addEventListener('DOMContentLoaded', function () {
     <script src="../Controller/contact_handler.js"></script>
 `;
 
+    /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+    PopUp Text Editor
+
+    *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+    const popupTextEditor = `
+    <label htmlFor="language-select">Select Language:</label>
+    <select id="language-select">
+        <option value="cnko" class="translatable" data-translation-key="cnko"></option>
+        <option value="en" class="translatable" data-translation-key="en"></option>
+        <option value="fr" class="translatable" data-translation-key="fr"></option>
+    </select>
+
+    <label htmlFor="html-select">Select HTML:</label>
+    <select id="html-select">
+        <option value="htmlCGU" class="translatable" data-translation-key="cgu"></option>
+        <option value="htmlFAQ" class="translatable" data-translation-key="faq"></option>
+        <option value="htmlMentionLegales" class="translatable" data-translation-key="footerLegalNotice"></option>
+    </select>
+
+    <textarea id="html-editor" rows="10" cols="50"></textarea>
+    <br/>
+    <button id="save-button">Save</button>
+
+    <script src="../Controller/footerTextHandler.js"></script>
+`;
 
     /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
