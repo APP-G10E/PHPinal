@@ -31,6 +31,9 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
+$customerId = $_GET['customerId'];
+
+
 $conn->close();
 
 
@@ -73,14 +76,26 @@ $conn->close();
                 </div>
             </div>
         </div>
+        <div id="editProfileButton" class="translatable right-header-button" data-translation-key="editProfile" onclick="showFestivalList()"> </div>
+
+        <script>
+            function showFestivalList() {
+                document.getElementById("festival-popup").style.display = "block";
+            }
+
+            function hideFestivalList() {
+                document.getElementById("festival-popup").style.display = "none";
+            }
+        </script>
+
         <div class="translatable right-header-button" data-translation-key="disconnection"></div>
+
     </div>
 </header>
 
 <body>
 <div id="spectateur-container">
-    <div class="translatable bjrSpectateur" data-translation-key="hello"></div>
-    <div class="bjrSpectateur" id="bjrSpectateur"> <?php echo '&nbsp;' . htmlspecialchars($user['firstName']); ?></div>
+    <div class="translatable bjrSpectateur" data-translation-key="hello"></div> <div class="bjrSpectateur" id="bjrSpectateur"> <?php echo '&nbsp;'.htmlspecialchars($user['firstName']); ?></div>
 </div>
 <div id="body-container">
     <div id="festival-banner-container">
@@ -103,11 +118,11 @@ $conn->close();
                     <p>⭕</p>
                 </div>
                 <div class="festival-populaire" id="festival-populaire-3">
-                    <p>Les Ardentes</p>
+                    <p>Lollapalooza</p>
                     <p>⭕</p>
                 </div>
                 <div class="festival-populaire" id="festival-populaire-4">
-                    <p>Hellfest</p>
+                    <p>Garo Rock</p>
                     <p>🟢</p>
                 </div>
             </div>
@@ -125,11 +140,37 @@ $conn->close();
     </div>
 </div>
 <script src="../Controller/dashboard_client.js"></script>
+
 </body>
 
 <?php
 include '../Styles/footer.php';
 ?>
+
+
+<div id="festival-popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hideFestivalList()">&times;</span>
+        <h3 data-translation-key="editProfile" class="translatable"></h3>
+        <form class="festival-table" method="post" action="update_profile.php" class="form-container">
+
+                <input type="hidden" name="customerId" value="<?php echo htmlspecialchars($customerId); ?>">
+
+                <label for="surname" data-translation-key="surnamePlaceholder" class="translatable"></label>
+                <input type="text" name="surname" value="<?php echo htmlspecialchars($user['surname']); ?>" class="form-input" required>
+
+                <label for="firstName"  data-translation-key="firstNamePlaceholder" class="translatable" ></label>
+                <input type="text" name="firstName" value="<?php echo htmlspecialchars($user['firstName']); ?>" class="form-input" required>
+
+                <label for="phoneNumber" data-translation-key="telephonePlaceholder" class="translatable"></label>
+                <input type="text" name="phoneNumber" value="<?php echo htmlspecialchars($user['phoneNumber']); ?>" class="form-input" required>
+
+            <button type="submit" name="organiserForm" id="login" class="translatable form-submit" data-translation-key="updateProfileButton"></button>
+        </form>
+    </div>
+</div>
+
+
 
 </html>
 <script src="../Controller/lang-select.js"></script>

@@ -19,7 +19,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $surname, $firstName, $phoneNumber, $customerId);
 
     if ($stmt->execute()) {
-        echo "Profile updated successfully.";
+        // Fetch login expiration time from the database
+        $sql = "SELECT subscriptionExpireDate FROM customers WHERE customerId = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $customerId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $login_expire_time = $row['subscriptionExpireDate'];
+
+        // Fetch language from the URL
+        $parse_lang = $_POST['parse_lang'];
+
+        // Redirect to dashboard_client.php with parameters
+        $customer_id = $customerId;
+        $redirect_url = "dashboard_client.php?customerId=$customer_id&loginExpireTime=$login_expire_time&lang=$parse_lang";
+        header("Location: $redirect_url");
+        exit;
     } else {
         echo "Error updating profile: " . $stmt->error;
     }
