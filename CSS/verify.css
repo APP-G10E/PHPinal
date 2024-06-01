@@ -1,5 +1,6 @@
 body {
     font-size: larger;
+    font-family: Inter-Regular, serif;
     background-color: #f0f0f0;
 }
 
@@ -57,4 +58,39 @@ th, td {
 
 th {
     background-color: #f2f2f2;
+}
+
+/*-*-*-*-*-*-*-*-*-*
+
+Footer
+
+-*-*-*-*-*-*-*-*-*-*/
+
+#html-editor {
+    display: flex;
+}
+
+#html-editor-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    max-width: 50vw;
+    padding: 0.5vw;
+}
+
+.editor-select {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0.5vh;
+    font-family: Inter-Regular, serif;
+}
+
+#html-editor {
+    min-width: 90vw;
+    height: 55vh;
+}
+
+#save-button {
+    max-width: 25vw;
 }

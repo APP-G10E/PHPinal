@@ -243,7 +243,7 @@ header div {
     user-select: none;
 }
 
-#header-hi-text {
+.header-hi-text {
     color: white;
     font-family: Inter-Regular, "Noto Serif KR", serif;
     font-size: 1.2vw;
@@ -255,7 +255,7 @@ header div {
     justify-self: right;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     color: #a9a9a9;
     background-color: #2a2e37;
     padding-left: 0.579vw;
@@ -364,12 +364,12 @@ footer {
     fill: #E4405F;
 }
 
-#whatsapp-svg:hover path {
-    fill: #25d366;
+#facebook-svg:hover path {
+    fill: #0d4a8d;
 }
 
-#twitter-svg:hover path {
-    fill: #179cf0;
+#x-svg:hover path {
+    fill: #1c3461;
 }
 
 .footer-truc {
@@ -392,3 +392,118 @@ footer {
     cursor: pointer;
     padding: 5px;
 }
+
+/*-*-*-*-*-*-*-*-*-*
+
+Pop Up
+
+-*-*-*-*-*-*-*-*-*-*/
+
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #121721;
+    width: 60vw;
+    height: 60vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-start;
+    border-radius: 2%;
+    padding: 15px 10px 15px 10px;
+}
+
+.pop-up-retour {
+    color: white;
+    font-family: Inter-Regular, serif;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 2vh;
+}
+
+.pop-up-retour:hover {
+    color: #908c8c;
+}
+
+.pop-up-content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    max-height: 60vh;
+    width: 60vw;
+    color: white;
+    font-size: 2.5vh;
+    font-family: Inter-Regular, serif;
+    padding-right: 5vw;
+}
+
+.pop-up-content::-webkit-scrollbar {
+    background: transparent;
+    width: 0;
+}
+
+.titre {
+    color: #3CB9FC;
+}
+
+.form-group button:hover {
+    outline: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.form-group input, .form-group textarea {
+    width: 300px;
+    padding: 10px;
+    background-color: #292e37;
+    border: 1px solid #292e37;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 15px;
+    font-family: "Inter-Regular", 'Noto Serif KR Light', sans-serif;
+    resize: none;
+}
+
+
+.form-group button {
+    width: 320px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #757575;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "Inter-Regular", 'Noto Serif KR Medium', sans-serif;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+    color: #A0A0A0;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border: 1px solid #3cb9fc;
+}
+
+.translatable,
+a {
+    display: inline-block;
+}
+
+.close {
+    color: white;
+    justify-self: flex-end;
+}
+
+.close:hover {
+    color: grey;
+    cursor: pointer;
+}
+

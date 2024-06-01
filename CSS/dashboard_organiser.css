@@ -1,0 +1,67 @@
+body {
+    background-color: #131722;
+}
+
+#body-container {
+    margin-top: 15vh;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    align-items: center;
+}
+
+#button-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: fit-content;
+    margin-bottom: 2vh;
+}
+
+.miniPageButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #2a2e37;
+    padding-left: 0.579vw;
+    padding-right: 0.579vw;
+    margin-left: 0.579vw;
+    margin-right: 0.579vw;
+    border-style: none;
+    border-radius: 0.5vw;
+    font-family: Inter-Light, serif;
+    font-size: 2vh;
+    min-height: 5vh;
+    min-width: 7.887vw;
+    z-index: 1;
+}
+
+.miniPageButton:hover {
+    background-color: #3cb9fc;
+    color: white;
+    cursor: pointer;
+}
+
+#miniPageContainer {
+    width: 60vw;
+    height: 60vh;
+    z-index : 50;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#miniPageContainer::-webkit-scrollbar{
+    display: none;
+}
+
+header{
+    margin-top: 10px;
+}
