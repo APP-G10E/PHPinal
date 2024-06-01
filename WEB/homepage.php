@@ -22,13 +22,48 @@ include '../Styles/head.php';
                 </div>
             </div>
         </div>
-        <a href="sign_up.php">
+        <a href="sign_up.php" id="sign-up-link">
         <div class="translatable right-header-button" id="header-subscribe" data-translation-key="subscribe"></div>
             </a>
-        <a href="login.php">
+        <a href="login.php" id="login-link">
             <div class="translatable right-header-button" id="header-login" data-translation-key="connection"></div>
         </a>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function getQueryParam(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+            const customerId = getQueryParam('customerId');
+            const loginExpireTime = getQueryParam('loginExpireTime');
+            const lang = getQueryParam('lang');
+
+            if (customerId) {
+                const rightSideHeader = document.getElementById('right-side-header');
+                const signUpLink = document.getElementById('sign-up-link');
+                const loginLink = document.getElementById('login-link');
+
+                if (signUpLink) signUpLink.style.display = 'none';
+                if (loginLink) loginLink.style.display = 'none';
+
+                const dashboardButton = document.createElement('button');
+                dashboardButton.id = 'dashboard-button';
+                dashboardButton.className = 'translatable right-header-button';
+                dashboardButton.dataset.translationKey = 'dashboard';
+                //dashboardButton.textContent = 'Go to Dashboard';
+
+                const url = `dashboard_client.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}&lang=${lang}`;
+
+                dashboardButton.addEventListener('click', function() {
+                    window.location.href = url;
+                });
+
+                rightSideHeader.appendChild(dashboardButton);
+            }
+        });
+    </script>
 </header>
 
 <body>
