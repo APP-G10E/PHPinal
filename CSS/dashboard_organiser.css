@@ -1,67 +1,80 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    font-family: Inter-Light, serif;
+    max-height: 44px;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     background-color: #131722;
 }
 
 #body-container {
-    margin-top: 15vh;
-    min-height: 80vh;
+    font-family: 'Inter', sans-serif;
     display: flex;
+    justify-self: center;
     flex-direction: column;
     justify-content: flex-start;
-
     align-items: center;
 }
 
-#button-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: fit-content;
-    margin-bottom: 2vh;
-}
-
-.miniPageButton {
+#navbar {
+    background-color: #121721;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
     display: flex;
     justify-content: center;
+}
+
+#navbar a {
+    color: white;
+    text-decoration: none;
+    z-index: 1;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #00ADEF;
+}
+
+#navbar a:hover {
+    background-color: #008DB9;
+}
+
+.content-selector {
+    margin: 0 5px 0 5px;
+}
+
+#content-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    color: #ffffff;
-    background-color: #2a2e37;
-    padding-left: 0.579vw;
-    padding-right: 0.579vw;
-    margin-left: 0.579vw;
-    margin-right: 0.579vw;
-    border-style: none;
-    border-radius: 0.5vw;
-    font-family: Inter-Light, serif;
-    font-size: 2vh;
-    min-height: 5vh;
-    min-width: 7.887vw;
+    justify-content: space-between;
     z-index: 1;
 }
 
-.miniPageButton:hover {
-    background-color: #3cb9fc;
-    color: white;
-    cursor: pointer;
-}
-
-#miniPageContainer {
-    width: 60vw;
-    height: 60vh;
-    z-index : 50;
-    overflow: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-#miniPageContainer::-webkit-scrollbar{
+.tab-content {
     display: none;
 }
 
-header{
-    margin-top: 10px;
+.tab-content.active {
+    display: flex;
+}
+
+.form-container {
+    display: flex;
+}
+
+.form-container > div {
+    background-color: #1d1f27;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

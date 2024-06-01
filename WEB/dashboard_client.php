@@ -214,9 +214,5 @@ include '../Styles/footer.php';
 <script src="../Controller/lang-select.js"></script>
 
 <!--
-Ajouter système de coordonnées pour les capteurs qui change les translation keys en fonction de celles-ci
-Faire la liste des capteurs avec les deux scripts avec le html des sensor elements
-Pareil pour les festivals populaires
-Changer la bannière (image) selon le festival sélectionné
-...
+Faire la liste des festivals populaires
 -->
