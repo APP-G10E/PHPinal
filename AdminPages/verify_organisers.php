@@ -141,9 +141,9 @@ if ($result->num_rows > 0) {
 
 <div id="html-editor-container">
     <label for="language-select">Langue</label><select class="editor-select" id="language-select">
-        <option value="cnko">Coréen de Chine</option>
-        <option value="en">Anglais</option>
         <option value="fr">Français</option>
+        <option value="en">Anglais</option>
+        <option value="cnko">Coréen de Chine</option>
     </select>
 
 

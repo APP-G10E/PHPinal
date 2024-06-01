@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     exit;
 }
 
-$sql1 = "SELECT currentSoundDensity, latitude, longitude FROM sensor WHERE festivalId = '$festivalId'";
+$sql1 = "SELECT sensorId, currentSoundDensity, latitude, longitude FROM sensor WHERE festivalId = '$festivalId'";
 $result = $conn->query($sql1);
 
 $sensors = array();

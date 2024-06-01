@@ -47,7 +47,7 @@ document.querySelector('#festival-recherche').addEventListener('input', function
         return;
     }
 
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open('POST', '../Controller/fetch_sensors.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
@@ -76,6 +76,8 @@ document.querySelector('#festival-recherche').addEventListener('input', function
                 console.log("La longitude est de: ", sensorLongitude)
                 let sensorElement = document.createElement('div');
                 sensorElement.className = 'sensor-element';
+                sensorElement.dataset.sensorId = sensor.sensorId;
+
 
                 let positionKey = 'volume';
                 if (sensorLatitude === 1) {
@@ -152,4 +154,35 @@ document.querySelector('#festival-recherche').addEventListener('input', function
         console.log('Request failed');
     };
     xhr.send('festivalName=' + encodeURIComponent(festivalName));
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("c'est parti'");
+
+    document.querySelector('#sensor-elements-container').addEventListener('click', function (event) {
+        if (event.target.matches('.monter-son')) {
+            sendVoteToDatabase(event.target.closest('.sensor-element').dataset.sensorId, 'up');
+        } else if (event.target.matches('.baisser-son')) {
+            sendVoteToDatabase(event.target.closest('.sensor-element').dataset.sensorId, 'down');
+        }
+    });
+
+    function sendVoteToDatabase(sensorId, vote) {
+        console.log('Sending vote to database: ', sensorId, vote); // Log the sensorId and vote
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '../Controller/vote_handler.php', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (this.status === 200) {
+                console.log('Response from server: ', this.responseText); // Log the server response
+            } else {
+                console.log('Error status: ' + this.status);
+            }
+        };
+        xhr.onerror = function () {
+            console.log('Request failed');
+        };
+        xhr.send('sensorId=' + encodeURIComponent(sensorId) + '&vote=' + encodeURIComponent(vote));
+    }
 });
