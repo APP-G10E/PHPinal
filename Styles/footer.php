@@ -1,12 +1,12 @@
 <footer>
     <img src="../Assets/Champion.png" alt="logo" id="logo-foot">
     <div class="container-liens">
-        <div><a class="footer-link translatable" data-translation-key="footerCookieSettings" href=""></a></div>
-        <div><a class="footer-link translatable" data-translation-key="footerDataProtection" href=""></a></div>
-        <div><a class="footer-link translatable" data-translation-key="footerLegalNotice" href=""></a></div>
-        <div><a class="footer-link translatable" data-translation-key="footerCGV" href=""></a></div>
-        <div><a class="footer-link translatable" data-translation-key="contactUs" href=""></a></div>
-        <div><a class="footer-link translatable" data-translation-key="footerFAQ" href=""></a></div>
+        <div><div class="footer-link translatable" data-translation-key="footerCookieSettings"></div></div>
+        <div><div class="footer-link translatable" id="footerProtectionDonnees" data-translation-key="footerDataProtection"></div></div>
+        <div><div class="footer-link translatable" id="footerMentionsLegales" data-translation-key="footerLegalNotice"></div></div>
+        <div><div class="footer-link translatable" id="footerCGV" data-translation-key="footerCGV"></div></div>
+        <div><div class="footer-link translatable" id="footerContactUs" data-translation-key="contactUs"></div></div>
+        <div><div class="footer-link translatable" id="footerFAQ" data-translation-key="footerFAQ"></div></div>
     </div>
     <br>
 

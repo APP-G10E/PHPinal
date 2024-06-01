@@ -34,7 +34,7 @@ $unverifiedOrganisers = [];
 $sql = "SELECT organiserId, email, surname, firstName, phoneNumber, reason FROM `organisers` WHERE verified = FALSE";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $unverifiedOrganisers[] = $row;
     }
 }
@@ -46,6 +46,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <title>Verify Organisers</title>
     <link rel="stylesheet" href="../CSS/verify.css">
+    <link rel="stylesheet" href="../CSS/global.css">
     <script>
         function showReasonPopup(organiser) {
             const popup = document.createElement('div');
@@ -137,5 +138,27 @@ if ($result->num_rows > 0) {
     <?php endforeach; ?>
     </tbody>
 </table>
+
+<div id="html-editor-container">
+    <label for="language-select">Langue</label><select class="editor-select" id="language-select">
+        <option value="cnko">Coréen de Chine</option>
+        <option value="en">Anglais</option>
+        <option value="fr">Français</option>
+    </select>
+
+
+    <label for="html-select">Pop-up à modifier:</label><select class="editor-select" id="html-select">
+        <option value="htmlCGU">CGU</option>
+        <option value="htmlFAQ">FAQ</option>
+        <option value="htmlMentionsLegales">Mentions Légales</option>
+    </select>
+
+    <label for="html-editor"></label><textarea id="html-editor" class="editor-select" rows="10" cols="50"></textarea>
+    <br/>
+    <button id="save-button">Save</button>
+
+    <script src="../Controller/footerTextHandler.js"></script>
+</div>
+
 </body>
 </html>
