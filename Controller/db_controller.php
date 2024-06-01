@@ -1,8 +1,8 @@
 <?php
-$servername = "herogu.garageisep.com";
-$username = "TBpQTaenke_champions";
-$password = "hZ0hRGmX5Kna1oIh";
-$dbname = "GOolbSJmUM_champions";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "app_g10e";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
