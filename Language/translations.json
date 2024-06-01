@@ -132,7 +132,8 @@
         "en": "English",
         "hello": "Hello,",
         "updateProfileButton": "Update",
-        "editProfile": "Edit profile"
+        "editProfile": "Edit profile",
+        "dashboard" : "Dashboard"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -199,7 +200,7 @@
         "en": "Anglais",
         "hello": "Bonjour,",
         "editProfile": "Modifier le profil",
-        "updateProfileButton": "Mettre à jour"
-        
+        "updateProfileButton": "Mettre à jour",
+        "dashboard" : "Consulter les festivals"
     }
 }

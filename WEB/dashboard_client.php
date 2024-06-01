@@ -36,6 +36,9 @@ $customerId = $_GET['customerId'];
 
 $conn->close();
 
+$customer_id = $_GET['customerId'];
+$login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
+
 
 ?>
 
@@ -64,6 +67,27 @@ $conn->close();
         <img src="/Assets/Champion.png" id="logo-header" alt="Logo Champions">
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve PHP variables passed into JavaScript
+            const customerId = "<?php echo $customer_id; ?>";
+            const loginExpireTime = "<?php echo $login_expire_time; ?>";
+
+            // Select the div using its class names and data attribute
+            const button = document.querySelector('.translatable.right-header-button[data-translation-key="back_to_HomePage"]');
+
+            // Check if the div exists
+            if (button) {
+                // Add a click event listener to the div
+                button.addEventListener('click', function() {
+                    // Construct the URL with query parameters
+                    const url = `homepage.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}`;
+                    window.location.href = url;
+                });
+            }
+        });
+    </script>
+
     <div id="right-side-header">
         <div class="translatable header-hi-text" data-translation-key="headerHiText"></div>
         <div class="header-hi-text" id="header-name" data-translation-key="headerName"></div>
@@ -76,6 +100,9 @@ $conn->close();
                 </div>
             </div>
         </div>
+
+        <div class="translatable right-header-button" data-translation-key="back_to_HomePage"></div>
+
         <div id="editProfileButton" class="translatable right-header-button" data-translation-key="editProfile" onclick="showFestivalList()"> </div>
 
         <script>
@@ -89,6 +116,17 @@ $conn->close();
         </script>
 
         <div class="translatable right-header-button" data-translation-key="disconnection"></div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const button = document.querySelector('.translatable.right-header-button[data-translation-key="disconnection"]');
+                if (button) {
+                    button.addEventListener('click', function() {
+                        window.location.href = 'homepage.php';
+                    });
+                }
+            });
+        </script>
+
 
     </div>
 </header>
