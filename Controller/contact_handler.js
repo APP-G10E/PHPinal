@@ -9,20 +9,15 @@ window.setupContactForm = function () {
             const userEmail = document.getElementById('user_email').value;
             const demande = document.getElementById('demande').value;
 
-            const data = {
-                user_name: userName,
-                user_Fname: userFname,
-                user_email: userEmail,
-                demande: demande
-            };
-            console.log("Contenu du contact: ", data)
+            let formData = new FormData();
+            formData.append('user_name', userName);
+            formData.append('user_Fname', userFname);
+            formData.append('user_email', userEmail);
+            formData.append('demande', demande);
 
             fetch('../Controller/process_form.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
+                body: formData
             })
                 .then(response => response.json())
                 .then(data => {
