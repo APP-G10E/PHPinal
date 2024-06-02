@@ -151,6 +151,11 @@ if ($result->num_rows > 0) {
         <option value="htmlCGU">CGU</option>
         <option value="htmlFAQ">FAQ</option>
         <option value="htmlMentionsLegales">Mentions Légales</option>
+        <option value="htmlProtectionDonnees">Protection des données</option>
+        <option value="htmlContactUs">Contactez-nous</option>
+        <option value="htmlFestivalsPartenaires">Festivals partenaires</option>
+        <option value="htmlRisquesAuditifs">Risques auditifs</option>
+        <option value="htmlCookies">Cookies</option>
     </select>
 
     <label for="html-editor"></label><textarea id="html-editor" class="editor-select" rows="10" cols="50"></textarea>

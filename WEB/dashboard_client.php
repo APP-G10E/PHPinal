@@ -143,7 +143,7 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
     <div id="festival-info-container" class="center-column">
         <div id="festival-recherche-container">
             <p class="translatable festival-info-title" data-translation-key="choixFestival"></p>
-            <input type="text" class="translatable" id="festival-recherche" data-translation-key="festivalRecherche">
+            <label for="festival-recherche"></label><input type="text" class="translatable" id="festival-recherche" data-translation-key="festivalRecherche">
 
             <p class="translatable" data-translation-key="festivalsRecherchesTitre" id="festivals-recherches-titre"></p>
             <div id="festivals-populaires">
