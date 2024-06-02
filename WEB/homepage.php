@@ -23,19 +23,20 @@ include '../Styles/head.php';
             </div>
         </div>
         <a href="sign_up.php" id="sign-up-link">
-        <div class="translatable right-header-button" id="header-subscribe" data-translation-key="subscribe"></div>
-            </a>
+            <div class="translatable right-header-button" id="header-subscribe" data-translation-key="subscribe"></div>
+        </a>
         <a href="login.php" id="login-link">
             <div class="translatable right-header-button" id="header-login" data-translation-key="connection"></div>
         </a>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             function getQueryParam(name) {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get(name);
             }
+
             const customerId = getQueryParam('customerId');
             const loginExpireTime = getQueryParam('loginExpireTime');
             const lang = getQueryParam('lang');
@@ -56,7 +57,7 @@ include '../Styles/head.php';
 
                 const url = `dashboard_client.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}&lang=${lang}`;
 
-                dashboardButton.addEventListener('click', function() {
+                dashboardButton.addEventListener('click', function () {
                     window.location.href = url;
                 });
 
@@ -78,27 +79,33 @@ include '../Styles/head.php';
 <main>
     <div class="image-container">
         <img src="../Assets/fest3.png" alt="fest3" id="img8">
-        <div class="image-text-title"><strong class="translatable" data-translation-key="stayInDirectContact"></strong></div>
-        <div class="image-text-first-line translatable" data-translation-key="comfortableAndSafeListeningExperience"></div>
+        <div class="image-text-title"><strong class="translatable" data-translation-key="stayInDirectContact"></strong>
+        </div>
+        <div class="image-text-first-line translatable"
+             data-translation-key="comfortableAndSafeListeningExperience"></div>
         <div class="image-text-second-line translatable" data-translation-key="championCaresForHealth"></div>
     </div>
     <br>
     <div class="image-container">
         <img src="../Assets/fest1.png" alt="logo" id="img3">
-        <div class="image-text-title"><strong class="translatable" data-translation-key="interactWithFestivals"></strong></div>
+        <div class="image-text-title"><strong class="translatable"
+                                              data-translation-key="interactWithFestivals"></strong></div>
         <div class="image-text-second-line translatable" data-translation-key="vote"></div>
     </div>
     <br>
     <div class="image-container">
         <img src="../Assets/fest2.png" alt="fest2" id="img4">
-        <div class="image-text-title"><strong class="translatable" data-translation-key="accessPartnerFestivals"></strong></div>
+        <div class="image-text-title"><strong class="translatable"
+                                              data-translation-key="accessPartnerFestivals"></strong></div>
         <div class="image-text-second-line translatable" data-translation-key="subscriptionBenefits"></div>
     </div>
 
     <div class="image-container">
-        <div class="featured-festivals"><strong class="translatable" data-translation-key="featuredFestivals"></strong></div>
+        <div class="featured-festivals"><strong class="translatable" data-translation-key="featuredFestivals"></strong>
+        </div>
         <br></br>
-        <div class="partner-festivals-list translatable" data-translation-key="partnerFestivalsList" onclick="showFestivalList()"></div>
+        <div class="partner-festivals-list translatable" data-translation-key="partnerFestivalsList"
+             onclick="showFestivalList()"></div>
     </div>
     <br></br>
 
@@ -145,7 +152,7 @@ include '../Styles/head.php';
                 </div>
             </div>
         <?php else : ?>
-            <p> </p>
+            <p></p>
         <?php endif; ?>
     </div>
 </main>
@@ -190,8 +197,7 @@ include '../Styles/head.php';
 </div>
 
 
-
-
+<script src="../Controller/popups.js"></script>
 </body>
 <br></br>
 <br></br>
@@ -201,7 +207,6 @@ include '../Styles/footer.php';
 ?>
 
 </html>
-
 <script src="../Controller/lang-select.js"></script>
 
 <script>
@@ -225,6 +230,7 @@ include '../Styles/footer.php';
         currentIndex = (currentIndex - slidesToShow + totalSlides) % totalSlides;
         updateCarousel();
     }
+
     function showFestivalList() {
         document.getElementById("festival-popup").style.display = "block";
     }

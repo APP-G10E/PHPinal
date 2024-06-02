@@ -27,9 +27,9 @@ window.setupContactForm = function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Formulaire envoyé avec succès !');
+                        console.log("Formulaire envoyé avec succès");
                     } else {
-                        alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.');
+                        console.log("Erreur lors de l\'envoi du formulaire. Veuillez réessayer.");
                     }
                 })
                 .catch((error) => {
