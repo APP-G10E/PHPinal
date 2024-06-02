@@ -22,7 +22,11 @@ window.setupContactForm = function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        console.log("Formulaire envoyé avec succès");
+                        console.log("Formulaire envoyé avec succès")
+                        const contactSentDiv = document.getElementById('contact-sent');
+                        contactSentDiv.style.display = 'block';
+                        contactSentDiv.style.color = 'green';
+                        contactSentDiv.innerHTML = 'Votre demande a bien été envoyée. Nous vous répondrons dans les plus brefs délais. Merci !';
                     } else {
                         console.log("Erreur lors de l\'envoi du formulaire. Veuillez réessayer.");
                     }
