@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     let lang = urlParams.get('lang');
 
+    let mask = document.createElement('div');
+    mask.style.position = 'fixed';
+    mask.style.top = '0';
+    mask.style.left = '0';
+    mask.style.width = '100%';
+    mask.style.height = '100%';
+    mask.style.zIndex = '999'; // Ensure it's below the popup
+    mask.style.background = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black
+    mask.id = 'mask'; // Give it an ID so we can remove it later
+
     async function fetchPopups() {
         try {
             const response = await fetch('../Language/footerText.json');
@@ -35,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.getElementById('footerContactUs').addEventListener('click', function () {
             popUp(popups[lang]['htmlContactUs']);
+            window.setupContactForm();
         });
 
         document.getElementById('footerFAQ').addEventListener('click', function () {
@@ -71,24 +82,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function popUp(footerPopUp) {
         document.body.insertAdjacentHTML('beforeend', footerPopUp);
 
-        // Create a new div to act as a mask
-        let mask = document.createElement('div');
-        mask.style.position = 'fixed';
-        mask.style.top = '0';
-        mask.style.left = '0';
-        mask.style.width = '100%';
-        mask.style.height = '100%';
-        mask.style.zIndex = '999'; // Ensure it's below the popup
-        mask.style.background = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black
-        mask.id = 'mask'; // Give it an ID so we can remove it later
-
         document.body.appendChild(mask);
 
         document.addEventListener('keydown', escapeKeyHandler);
-        console.log('Event listener added for keydown');
 
         document.body.addEventListener('click', bodyClickHandler);
-        console.log('Event listener added for body click');
     }
 
     function closePopUp() {
@@ -101,29 +99,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         document.removeEventListener('keydown', escapeKeyHandler);
-        console.log('Event listener removed for keydown');
 
         document.body.removeEventListener('click', bodyClickHandler);
-        console.log('Event listener removed for body click');
     }
 
     function cookies(cookieConsentHTML) {
         const cookiesResponse = localStorage.getItem('cookiesResponse');
 
-        if (!cookiesResponse || cookiesResponse) {
+        if (!cookiesResponse) {
 
             document.body.insertAdjacentHTML('beforeend', cookieConsentHTML);
-
-            // Create a new div to act as a mask
-            let mask = document.createElement('div');
-            mask.style.position = 'fixed';
-            mask.style.top = '0';
-            mask.style.left = '0';
-            mask.style.width = '100%';
-            mask.style.height = '100%';
-            mask.style.zIndex = '999'; // Ensure it's below the popup
-            mask.style.background = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black
-            mask.id = 'mask'; // Give it an ID so we can remove it later
 
             document.body.appendChild(mask);
 

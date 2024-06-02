@@ -65,7 +65,8 @@
         "selectionnerFestival": "음악제 선택",
         "cnko": "중국어 한국어",
         "fr": "프랑스어",
-        "en": "영어"
+        "en": "영어",
+        "dashboard" : "대시보드"
     },
     "en": {
         "resend_code": "Resend the code",
@@ -88,7 +89,7 @@
         "createAccButton": "Sign up",
         "createAccount": "Create an account",
         "disconnection": "Log out",
-        "emailPlaceholder": "Your email address",
+        "emailPlaceholder": "example@example.com",
         "festivalRecherche": "Search for a festival",
         "festivalsPartenairesListe": "List of partner festivals",
         "festivalsRecherchesTitre": "Most searched festivals",
@@ -133,7 +134,8 @@
         "hello": "Hello,",
         "updateProfileButton": "Update",
         "editProfile": "Edit profile",
-        "dashboard" : "Dashboard"
+        "dashboard" : "Dashboard",
+        "demandPlaceholder": "Demand"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -157,7 +159,7 @@
         "createAccButton": "S'inscrire",
         "createAccount": "Créer un compte",
         "disconnection": "Se déconnecter",
-        "emailPlaceholder": "Votre adresse e-mail",
+        "emailPlaceholder": "exemple@exemple.com",
         "festivalRecherche": "Rechercher un festival",
         "festivalsPartenairesListe": "Liste des festivals partenaires",
         "festivalsRecherchesTitre": "Festivals les plus recherchés",
@@ -201,6 +203,7 @@
         "hello": "Bonjour,",
         "editProfile": "Modifier le profil",
         "updateProfileButton": "Mettre à jour",
-        "dashboard" : "Consulter les festivals"
+        "dashboard" : "Consulter les festivals",
+        "demandPlaceholder": "Demande"
     }
 }

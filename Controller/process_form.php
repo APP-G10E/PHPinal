@@ -1,36 +1,28 @@
 <?php
-header('Content-Type: application/json');
+include 'db_controller.php';
 
-if (isset($_POST['user_name']) && isset($_POST['user_Fname']) && isset($_POST['user_email']) && isset($_POST['demande'])) {
-    $userName = $_POST['user_name'];
-    $userFname = $_POST['user_Fname'];
-    $userEmail = $_POST['user_email'];
-    $demande = $_POST['demande'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['user_name']) && isset($_POST['user_Fname']) && isset($_POST['user_email']) && isset($_POST['demande'])) {
+        $userName = $_POST['user_name'];
+        $userFname = $_POST['user_Fname'];
+        $userEmail = $_POST['user_email'];
+        $demande = $_POST['demande'];
+        $sql = "INSERT INTO contact_us (firstName, surname, email, msg) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss",$userFname, $userName, $userEmail, $demande);
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "app_g10e";
+        $response = [];
+        if ($stmt->execute()) {
+            $response['success'] = true;
+        } else {
+            $response['success'] = false;
+        }
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+        echo json_encode($response);
 
-    if ($conn->connect_error) {
-        echo json_encode(['success' => false, 'message' => 'Erreur de connexion à la base de données']);
-        exit;
-    }
-
-    $stmt = $conn->prepare("INSERT INTO contact_form (firstName, surname, email, msg) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $userName, $userFname, $userEmail, $demande);
-
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true, 'message' => 'Données insérées avec succès']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'insertion des données']);
+        $response = ['success' => false, 'message' => 'POST data does not exist'];
+        echo json_encode($response);
     }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    echo json_encode(['success' => false, 'message' => 'Données du formulaire manquantes']);
 }
 ?>

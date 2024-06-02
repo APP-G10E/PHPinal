@@ -15,7 +15,8 @@
 </head>
 
 <header>
-    <div id="header-background"><img src="../Assets/fade_logo_banner.png" id="fade-logo-banner" alt="Logo Champions"></div>
+    <div id="header-background"><img src="../Assets/fade_logo_banner.png" id="fade-logo-banner" alt="Logo Champions">
+    </div>
 
     <div id="left-side-header">
         <img src="../Assets/Champion.png" id="logoHeader" alt="Logo Champions">

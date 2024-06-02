@@ -53,7 +53,6 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
     <link rel="stylesheet" href="/CSS/global.css">
     <link rel="stylesheet" href="/CSS/dashboard_client.css">
 
-    <script src="../Controller/popups.js"></script>
 </head>
 
 <!--Pop-up validation des cookies-->
@@ -68,7 +67,7 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Retrieve PHP variables passed into JavaScript
             const customerId = "<?php echo $customer_id; ?>";
             const loginExpireTime = "<?php echo $login_expire_time; ?>";
@@ -79,7 +78,7 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
             // Check if the div exists
             if (button) {
                 // Add a click event listener to the div
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     // Construct the URL with query parameters
                     const url = `homepage.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}`;
                     window.location.href = url;
@@ -103,7 +102,8 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
 
         <div class="translatable right-header-button" data-translation-key="back_to_HomePage"></div>
 
-        <div id="editProfileButton" class="translatable right-header-button" data-translation-key="editProfile" onclick="showFestivalList()"> </div>
+        <div id="editProfileButton" class="translatable right-header-button" data-translation-key="editProfile"
+             onclick="showFestivalList()"></div>
 
         <script>
             function showFestivalList() {
@@ -117,10 +117,10 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
 
         <div class="translatable right-header-button" data-translation-key="disconnection"></div>
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 const button = document.querySelector('.translatable.right-header-button[data-translation-key="disconnection"]');
                 if (button) {
-                    button.addEventListener('click', function() {
+                    button.addEventListener('click', function () {
                         window.location.href = 'homepage.php';
                     });
                 }
@@ -133,7 +133,8 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
 
 <body>
 <div id="spectateur-container">
-    <div class="translatable bjrSpectateur" data-translation-key="hello"></div> <div class="bjrSpectateur" id="bjrSpectateur"> <?php echo '&nbsp;'.htmlspecialchars($user['firstName']); ?></div>
+    <div class="translatable bjrSpectateur" data-translation-key="hello"></div>
+    <div class="bjrSpectateur" id="bjrSpectateur"> <?php echo '&nbsp;' . htmlspecialchars($user['firstName']); ?></div>
 </div>
 <div id="body-container">
     <div id="festival-banner-container">
@@ -143,7 +144,8 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
     <div id="festival-info-container" class="center-column">
         <div id="festival-recherche-container">
             <p class="translatable festival-info-title" data-translation-key="choixFestival"></p>
-            <label for="festival-recherche"></label><input type="text" class="translatable" id="festival-recherche" data-translation-key="festivalRecherche">
+            <label for="festival-recherche"></label><input type="text" class="translatable" id="festival-recherche"
+                                                           data-translation-key="festivalRecherche">
 
             <p class="translatable" data-translation-key="festivalsRecherchesTitre" id="festivals-recherches-titre"></p>
             <div id="festivals-populaires">
@@ -177,8 +179,9 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
         </div>
     </div>
 </div>
+<script src="../Controller/contact_handler.js"></script>
 <script src="../Controller/dashboard_client.js"></script>
-
+<script src="../Controller/popups.js"></script>
 </body>
 
 <?php
@@ -190,24 +193,27 @@ include '../Styles/footer.php';
     <div class="popup-content">
         <span class="close" onclick="hideFestivalList()">&times;</span>
         <h3 data-translation-key="editProfile" class="translatable"></h3>
-        <form class="festival-table" method="post" action="update_profile.php" class="form-container">
+        <form class="festival-table form-container" method="post" action="update_profile.php">
 
-                <input type="hidden" name="customerId" value="<?php echo htmlspecialchars($customerId); ?>">
+            <input type="hidden" name="customerId" value="<?php echo htmlspecialchars($customerId); ?>">
 
-                <label for="surname" data-translation-key="surnamePlaceholder" class="translatable"></label>
-                <input type="text" name="surname" value="<?php echo htmlspecialchars($user['surname']); ?>" class="form-input" required>
+            <label for="surname" data-translation-key="surnamePlaceholder" class="translatable"></label>
+            <input type="text" name="surname" value="<?php echo htmlspecialchars($user['surname']); ?>"
+                   class="form-input" required>
 
-                <label for="firstName"  data-translation-key="firstNamePlaceholder" class="translatable" ></label>
-                <input type="text" name="firstName" value="<?php echo htmlspecialchars($user['firstName']); ?>" class="form-input" required>
+            <label for="firstName" data-translation-key="firstNamePlaceholder" class="translatable"></label>
+            <input type="text" name="firstName" value="<?php echo htmlspecialchars($user['firstName']); ?>"
+                   class="form-input" required>
 
-                <label for="phoneNumber" data-translation-key="telephonePlaceholder" class="translatable"></label>
-                <input type="text" name="phoneNumber" value="<?php echo htmlspecialchars($user['phoneNumber']); ?>" class="form-input" required>
+            <label for="phoneNumber" data-translation-key="telephonePlaceholder" class="translatable"></label>
+            <input type="text" name="phoneNumber" value="<?php echo htmlspecialchars($user['phoneNumber']); ?>"
+                   class="form-input" required>
 
-            <button type="submit" name="organiserForm" id="login" class="translatable form-submit" data-translation-key="updateProfileButton"></button>
+            <button type="submit" name="organiserForm" id="login" class="translatable form-submit"
+                    data-translation-key="updateProfileButton"></button>
         </form>
     </div>
 </div>
-
 
 
 </html>
@@ -216,3 +222,5 @@ include '../Styles/footer.php';
 <!--
 Faire la liste des festivals populaires
 -->
+
+
