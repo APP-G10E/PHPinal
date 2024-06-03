@@ -108,6 +108,7 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
         <script>
             function showFestivalList() {
                 document.getElementById("festival-popup").style.display = "block";
+                document.getElementById("festival-popup").style.overflow = "hidden";
             }
 
             function hideFestivalList() {
