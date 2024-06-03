@@ -39,8 +39,8 @@
 <body>
 <div id="body-container">
     <div id="navbar">
-        <a href="#" class="content-selector" data-tab="userList">Liste des utilisateurs</a>
-        <a href="#" class="content-selector" data-tab="addFestival">Ajouter un festival</a>
+        <div id="navbar-button" class="content-selector" data-tab="userList">Liste des utilisateurs</div>
+        <div id="navbar-button" class="content-selector" data-tab="addFestival">Ajouter un festival</div>
     </div>
     <div id="content-container">
         <div id="userList" class="tab-content">

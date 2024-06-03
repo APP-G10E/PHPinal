@@ -1,15 +1,23 @@
+/*-*-*-*-*-*-*-*-*-*
+
+Dashboard Organiser
+
+-*-*-*-*-*-*-*-*-*-*/
+
 header {
     display: flex;
     justify-content: space-between;
     font-family: Inter-Light, serif;
     max-height: 44px;
+    padding: 1vh;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    align-content: center;
-    background-color: #131722;
+    background-color: #121721;
+    min-height: 80vh;
+    font-family: Inter-Light, serif;
 }
 
 #body-container {
@@ -23,14 +31,13 @@ body {
 
 #navbar {
     background-color: #121721;
-    width: 100%;
     padding: 10px;
     text-align: center;
     display: flex;
     justify-content: center;
 }
 
-#navbar a {
+#navbar-button {
     color: white;
     text-decoration: none;
     z-index: 1;
@@ -40,8 +47,9 @@ body {
     background-color: #00ADEF;
 }
 
-#navbar a:hover {
+#navbar-button:hover {
     background-color: #008DB9;
+    cursor: pointer;
 }
 
 .content-selector {
@@ -49,9 +57,7 @@ body {
 }
 
 #content-container {
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,4 +83,143 @@ body {
     border-radius: 12px;
     width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+/*-*-*-*-*-*-*-*-*-*
+
+Customer List
+
+-*-*-*-*-*-*-*-*-*-*/
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 10px; /* Add border-radius */
+    overflow: hidden; /* Ensure border-radius applies correctly */
+    color: black;
+}
+
+thead th {
+    background-color: #29334a;
+    padding: 10px;
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+    font-weight: bold;
+}
+
+tbody td {
+    padding: 10px;
+    background-color: white;
+}
+
+tbody td:first-child {
+}
+
+tbody td:last-child {
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/*-*-*-*-*-*-*-*-*-*
+
+Create Festival
+
+-*-*-*-*-*-*-*-*-*-*/
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.container form input {
+    max-width: 280px;
+}
+
+#blabla, #blabla1 {
+    min-width: 300px;
+}
+
+form, .event-list {
+    background-color: #1d1f27;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 450px;
+    align-content: center;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: white;
+}
+
+input[type="text"], input[type="date"], input[type="file"], input[type="submit"], button {
+    width: 280px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #05c7e6;
+    border-radius: 5px;
+    color: #ffffff;
+    background: #2c2f36;
+}
+
+input[type="submit"], button {
+    background-color: #00ADEF;
+    color: white;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #008DB9;
+}
+
+input::placeholder {
+    color: #aaaaaa;
+}
+
+.event-list {
+    max-height: 443px;
+    overflow-y: scroll;
+}
+
+.event-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #2c2f36;
+    border-radius: 8px;
+}
+
+.event-item h3 {
+    margin: 0 0 10px 0;
+    color: white;
+}
+
+nobr {
+    color: white;
+}
+
+.event-item p{
+    line-height: 0;
 }

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const tabs = document.querySelectorAll('#navbar a');
+    const tabs = document.querySelectorAll('#navbar-button');
     const tabContents = document.querySelectorAll('.tab-content');
 
     tabs.forEach(tab => {

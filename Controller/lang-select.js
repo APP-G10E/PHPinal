@@ -109,10 +109,17 @@ function changeLanguage(translations, lang) {
 
     translatableElements.forEach(element => {
         const key = element.dataset.translationKey;
-        element.textContent = langTranslations[key];
         if (element.tagName === 'INPUT') {
-            element.placeholder = langTranslations[key];
+            if (element.type === 'file') {
+                element.title = langTranslations[key];
+            } else {
+                element.placeholder = langTranslations[key];
+                if (element.type === 'submit') {
+                    element.value = langTranslations[key];
+                }
+            }
+        } else {
+            element.textContent = langTranslations[key];
         }
     });
 }
-

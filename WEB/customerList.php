@@ -44,7 +44,8 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
-    <link rel="stylesheet" href="../CSS/customerList.css">
+    <link rel="stylesheet" href="../CSS/dashboard_organiser.css">
+    <link rel="stylesheet" href="../CSS/global.css">
 </head>
 <body>
 <?php
@@ -65,7 +66,7 @@ if (isset($message)) {
     <tbody>
     <?php
     if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>{$row['firstName']}</td>";
             echo "<td>{$row['surname']}</td>";
@@ -84,7 +85,6 @@ if (isset($message)) {
     ?>
     </tbody>
 </table>
-<script src="scripts.js"></script>
 </body>
 </html>
 

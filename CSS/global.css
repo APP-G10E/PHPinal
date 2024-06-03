@@ -106,15 +106,6 @@ Pop-up de cookies
     height: 100%;
 }
 
-#page-mask {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
 .darken {
     filter: brightness(0.7);
 }
@@ -171,7 +162,6 @@ Header
 
 -*-*-*-*-*-*-*-*-*-*/
 
-
 header {
     display: flex;
     align-items: flex-start;
@@ -197,7 +187,7 @@ header div {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    width: 99.4%;
+    width: 99%;
 }
 
 #left-side-header {
@@ -268,7 +258,7 @@ header div {
     font-family: Inter-Light, "Noto Serif KR", serif;
     font-size: 80%;
     min-height: 4vh;
-    min-width: 6.887vw;
+    min-width: fit-content(0.887vw);
     z-index: 1;
 }
 
@@ -508,7 +498,7 @@ a {
     cursor: pointer;
 }
 
-#contact-form{
+#contact-form {
     display: flex;
     flex-direction: column;
     justify-content: center;

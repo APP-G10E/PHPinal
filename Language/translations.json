@@ -66,7 +66,19 @@
         "cnko": "중국어 한국어",
         "fr": "프랑스어",
         "en": "영어",
-        "dashboard" : "대시보드"
+        "dashboard" : "대시보드",
+        "demandPlaceholder": "요구",
+        "event": "행사",
+        "addFestival": "음악제 추가",
+        "beginning": "시작:",
+        "end": "끝:",
+        "price": "가격:",
+        "festivalName": "음악제 이름:",
+        "beginTime": "시작 시간:",
+        "endTime": "종료 시간:",
+        "ticketPrice": "티켓 가격:",
+        "festivalImage": "음악제 이미지:",
+        "add": "추가"
     },
     "en": {
         "resend_code": "Resend the code",
@@ -135,7 +147,18 @@
         "updateProfileButton": "Update",
         "editProfile": "Edit profile",
         "dashboard" : "Dashboard",
-        "demandPlaceholder": "Demand"
+        "demandPlaceholder": "Demand",
+        "event": "Events",
+        "addFestival": "Add a festival",
+        "beginning": "Beginning:",
+        "end": "End:",
+        "price": "Price:",
+        "festivalName": "Festival Name:",
+        "beginTime": "Begin Time:",
+        "endTime": "End Time:",
+        "ticketPrice": "Ticket Price:",
+        "festivalImage": "Festival Image:",
+        "add": "Add"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -204,6 +227,17 @@
         "editProfile": "Modifier le profil",
         "updateProfileButton": "Mettre à jour",
         "dashboard" : "Consulter les festivals",
-        "demandPlaceholder": "Demande"
+        "demandPlaceholder": "Demande",
+        "event": "Evénement",
+        "addFestival": "Ajouter un festival",
+        "beginning": "Début:",
+        "end": "Fin:",
+        "price": "Prix:",
+        "festivalName": "Nom du Festival:",
+        "beginTime": "Heure de début:",
+        "endTime": "Heure de fin:",
+        "ticketPrice": "Prix du billet:",
+        "festivalImage": "Image du festival:",
+        "add": "Ajouter"
     }
 }
