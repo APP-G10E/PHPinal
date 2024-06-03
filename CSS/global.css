@@ -188,6 +188,7 @@ header div {
     justify-content: center;
     align-items: flex-end;
     width: 99%;
+    z-index: -1;
 }
 
 #left-side-header {

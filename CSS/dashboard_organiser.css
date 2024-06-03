@@ -9,7 +9,7 @@ header {
     justify-content: space-between;
     font-family: Inter-Light, serif;
     max-height: 44px;
-    padding: 1vh;
+    padding: 0.5vh;
 }
 
 body {
@@ -30,7 +30,6 @@ body {
 }
 
 #navbar {
-    background-color: #121721;
     padding: 10px;
     text-align: center;
     display: flex;
@@ -164,6 +163,14 @@ form, .event-list {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     min-height: 450px;
     align-content: center;
+}
+
+.event-list{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    height: 100%;
+    flex-wrap: wrap;
 }
 
 label {
