@@ -90,13 +90,13 @@ body div {
     align-items: flex-start;
     font-family: Inter-Light, serif;
     min-height: 40px;
-    padding-bottom: 100px;
+    padding-bottom: 5vh;
 }
 
 .bjrSpectateur {
     color: white;
     font-family: Inter-Bold, serif;
-    padding-top: 150px;
+    padding-top: 5vh;
     font-size: 2vw;
 }
 
@@ -116,7 +116,7 @@ body div {
 }
 
 #festival-banner-container {
-    border-radius: 60px;
+    border-radius: 7.5vh;
     border: 1px solid #292e37;
     min-height: 68vh;
     max-height: 68vh;
@@ -318,6 +318,24 @@ body div {
     overflow: hidden;
     white-space: nowrap;
     justify-content: center;
+}
+
+.avis-son:hover {
+    cursor: pointer;
+    color: white;
+    transition: background-color 250ms linear;
+}
+
+.avis-son:not(:hover) {
+    transition: background-color 250ms linear;
+}
+
+.monter-son:hover {
+    background-color: #3cb9fc;
+}
+
+.baisser-son:hover {
+    background-color: #bcb9b9;
 }
 
 .monter-son {
