@@ -6,9 +6,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-global $conn;
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "app_g10e";
 
-include '../Controller/db_controller.php';
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['verify'])) {
@@ -113,14 +119,14 @@ if ($result->num_rows > 0) {
     </script>
 </head>
 <body>
-<h2>Verify Organisers</h2>
+<h2>Demandes de compte organisateur</h2>
 <table>
     <thead>
     <tr>
-        <th>Email</th>
-        <th>Surname</th>
-        <th>First Name</th>
-        <th>Phone Number</th>
+        <th>E-mail</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>N° de téléphone</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -139,6 +145,8 @@ if ($result->num_rows > 0) {
     </tbody>
 </table>
 
+<br>
+<h2>Modifier les pop-ups</h2>
 <div id="html-editor-container">
     <label for="language-select">Langue</label><select class="editor-select" id="language-select">
         <option value="fr">Français</option>
@@ -162,6 +170,25 @@ if ($result->num_rows > 0) {
     <br/>
     <button id="save-button">Save</button>
 
+    <br>
+    <h2>Rechercher un utilisateur</h2>
+
+    <div id="searchBar">
+        <label for="first-name-input"></label><input type="text" id="first-name-input" placeholder="Prénom">
+        <label for="surname-input"></label><input type="text" id="surname-input" placeholder="Nom de famille">
+        <label for="email-input"></label><input type="text" id="email-input" placeholder="E-mail">
+        <label for="phone-number-input"></label><input type="text" id="phone-number-input"
+                                                       placeholder="N° de téléphone">
+        <label for="verified-select"></label><select id="verified-select">
+            <option value="1">Vérifié</option>
+            <option value="0">Pas vérifié</option>
+        </select>
+        <button id="search-button">Search</button>
+    </div>
+
+    <div id="tbody"></div>
+
+    <script src="../AdminPages/fetch_customers.js"></script>
     <script src="../Controller/footerTextHandler.js"></script>
 </div>
 

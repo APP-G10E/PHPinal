@@ -202,6 +202,13 @@ input::placeholder {
 .event-list {
     max-height: 443px;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.event-list::-webkit-scrollbar {
+    background: transparent;
+    width: 0;
 }
 
 .event-item {
@@ -220,6 +227,6 @@ nobr {
     color: white;
 }
 
-.event-item p{
+.event-item p {
     line-height: 0;
 }
