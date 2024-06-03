@@ -94,3 +94,25 @@ Footer
 #save-button {
     max-width: 25vw;
 }
+
+#searchBar {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-content: baseline;
+}
+
+.searchField, .searchField select {
+    margin: 0 0.5vw 0 0.5vw;
+    height: 3vh;
+    border-radius: 2px;
+    border: 1px solid grey;
+}
+
+#tbody {
+    min-width: 90vw;
+}
+
+th, td {
+   border: 1px solid lightgrey;
+}

@@ -168,22 +168,23 @@ if ($result->num_rows > 0) {
 
     <label for="html-editor"></label><textarea id="html-editor" class="editor-select" rows="10" cols="50"></textarea>
     <br/>
-    <button id="save-button">Save</button>
+    <button id="save-button">Sauvegarder</button>
 
     <br>
     <h2>Rechercher un utilisateur</h2>
 
     <div id="searchBar">
-        <label for="first-name-input"></label><input type="text" id="first-name-input" placeholder="Prénom">
-        <label for="surname-input"></label><input type="text" id="surname-input" placeholder="Nom de famille">
-        <label for="email-input"></label><input type="text" id="email-input" placeholder="E-mail">
-        <label for="phone-number-input"></label><input type="text" id="phone-number-input"
+        <label for="first-name-input"></label><input type="text" class="searchField" id="first-name-input" placeholder="Prénom">
+        <label for="surname-input"></label><input type="text" class="searchField" id="surname-input" placeholder="Nom de famille">
+        <label for="email-input"></label><input type="text" class="searchField" id="email-input" placeholder="E-mail">
+        <label for="phone-number-input"></label><input type="text" class="searchField" id="phone-number-input"
                                                        placeholder="N° de téléphone">
-        <label for="verified-select"></label><select id="verified-select">
+        <label for="verified-select"></label><select class="searchField" id="verified-select">
             <option value="1">Vérifié</option>
             <option value="0">Pas vérifié</option>
+            <option value="x" selected="selected">..</option>
         </select>
-        <button id="search-button">Search</button>
+        <button id="search-button">Rechercher</button>
     </div>
 
     <div id="tbody"></div>

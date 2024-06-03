@@ -7,6 +7,10 @@ document.querySelector('#search-button').addEventListener('click', function () {
         'verified': document.getElementById('verified-select').value
     };
 
+    if (data.verified === "x") {
+        return;
+    }
+
     console.log("data: ", data);
 
     let xhr = new XMLHttpRequest();
@@ -17,19 +21,48 @@ document.querySelector('#search-button').addEventListener('click', function () {
         if (this.status === 200) {
             console.log("response: ", this.responseText);
             let response = JSON.parse(this.responseText);
-
             let tbody = document.getElementById('tbody');
 
+            tbody.innerHTML = '';
+
+            const legend = document.createElement('tr');
+
+            let thEmail = document.createElement('th');
+            let thSurname = document.createElement('th');
+            let thFirstName = document.createElement('th');
+            let thPhoneNumber = document.createElement('th');
+            let thVerified = document.createElement('th');
+
+            thEmail.innerText = 'E-mail';
+            thSurname.innerText = 'Nom de famille';
+            thFirstName.innerText = 'Prénom';
+            thPhoneNumber.innerText = 'Numéro de téléphone';
+            thVerified.innerText = 'Verifié';
+
+            legend.appendChild(thEmail);
+            legend.appendChild(thSurname);
+            legend.appendChild(thFirstName);
+            legend.appendChild(thPhoneNumber);
+            legend.appendChild(thVerified);
+
+            tbody.appendChild(legend);
+
+            let addedCustomers = [];
+
             response.forEach(customer => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
+                if (!addedCustomers.includes(customer.email)) {
+                    addedCustomers.push(customer.email);
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
                 <td>${customer.email}</td>
                 <td>${customer.surname}</td>
                 <td>${customer.firstName}</td>
                 <td>${customer.phoneNumber}</td>
                 <td>${customer.verified}</td>
             `;
-                tbody.appendChild(tr);
+                    tbody.appendChild(tr);
+                }
             });
             console.log('Response from server: ', this.responseText);
         } else {
@@ -39,6 +72,4 @@ document.querySelector('#search-button').addEventListener('click', function () {
     xhr.onerror = function () {
         console.log('Request failed');
     };
-    let dataString = Object.keys(data).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`).join('&');
-    xhr.send(dataString);
 });
