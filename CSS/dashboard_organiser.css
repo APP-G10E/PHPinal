@@ -53,12 +53,11 @@ body {
     cursor: pointer;
 }
 
-#mini-pages-container {
+#mini-page-container {
     height: 80vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
     z-index: 1;
 }
 
@@ -97,7 +96,7 @@ h3 {
 #organiserText {
     color: white;
     font-family: Inter-Bold, serif;
-    padding-top: 5vh;
+    padding-top: 2vh;
     font-size: 2vw;
     margin-bottom: 5vh;
 }
@@ -248,8 +247,7 @@ nobr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    margin: 20px auto;
+    overflow-y: scroll;
 }
 
 #festival-list .festival-item {
