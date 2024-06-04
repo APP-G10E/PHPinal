@@ -22,6 +22,13 @@ $sql = "SELECT firstName FROM customers WHERE customerId = '$customerId'";
 $result = $conn->query($sql);
 $user = $result->fetch_assoc();
 
+$sql = "SELECT surname, firstName, phoneNumber FROM customers WHERE customerId = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $customerId);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
 
 
 // Prepare and execute a statement to get the customer's associated festivals
@@ -99,6 +106,17 @@ $conn->close();
 
         <div id="editProfileButton" class="translatable right-header-button" data-translation-key="editProfile"
              onclick="showFestivalList()"></div>
+
+        <script>
+            function showFestivalList() {
+                document.getElementById("festival-popup").style.display = "block";
+                document.getElementById("festival-popup").style.overflow = "hidden";
+            }
+
+            function hideFestivalList() {
+                document.getElementById("festival-popup").style.display = "none";
+            }
+        </script>
 
         <div class="translatable right-header-button" data-translation-key="disconnection"></div>
 
