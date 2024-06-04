@@ -72,14 +72,10 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
             const customerId = "<?php echo $customer_id; ?>";
             const loginExpireTime = "<?php echo $login_expire_time; ?>";
 
-            // Select the div using its class names and data attribute
             const button = document.querySelector('.translatable.right-header-button[data-translation-key="back_to_HomePage"]');
 
-            // Check if the div exists
             if (button) {
-                // Add a click event listener to the div
                 button.addEventListener('click', function () {
-                    // Construct the URL with query parameters
                     const url = `homepage.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}`;
                     window.location.href = url;
                 });

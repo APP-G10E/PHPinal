@@ -12,83 +12,54 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Handle delete request
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
-    $email = $_POST['email'];
+// Check if the 'onlyFetch' parameter is set in the POST request
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['onlyFetch'])) {
+    // Query to select all customers
+    $sql = "SELECT surname, firstName, email, phoneNumber FROM customers";
+    $result = $conn->query($sql);
 
-    // SQL to delete a record
-    $sql = "DELETE FROM customers WHERE email = ?";
-
-    // Prepare and bind
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-
-    if ($stmt->execute()) {
-        $message = "Record deleted successfully";
-    } else {
-        $message = "Error deleting record: " . $conn->error;
+    // Fetch data and store it in an array
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
     }
 
-    $stmt->close();
-}
+    // Convert the array to a JSON string and echo it out
+    echo json_encode($data);
+} else {
+    // Handle delete request
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
+        $email = $_POST['email'];
 
-// Query to select all customers
-$sql = "SELECT surname, firstName, email, phoneNumber FROM customers";
-$result = $conn->query($sql);
+        // SQL to delete a record
+        $sql = "DELETE FROM customers WHERE email = ?";
 
-?>
+        // Prepare and bind
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User List</title>
-    <link rel="stylesheet" href="../CSS/dashboard_organiser.css">
-    <link rel="stylesheet" href="../CSS/global.css">
-</head>
-<body>
-<?php
-if (isset($message)) {
-    echo "<p>$message</p>";
-}
-?>
-<table>
-    <thead>
-    <tr>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Email</th>
-        <th>Numéro de téléphone</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>{$row['firstName']}</td>";
-            echo "<td>{$row['surname']}</td>";
-            echo "<td>{$row['email']}</td>";
-            echo "<td>{$row['phoneNumber']}</td>";
-            echo "<td>
-                    
-                        <button type='submit'>Delete</button>
-                    
-                  </td>";
-            echo "</tr>";
+        if ($stmt->execute()) {
+            $message = "Record deleted successfully";
+        } else {
+            $message = "Error deleting record: " . $conn->error;
         }
-    } else {
-        echo "<tr><td colspan='5'>Aucun utilisateur</td></tr>";
-    }
-    ?>
-    </tbody>
-</table>
-</body>
-</html>
 
-<?php
-// Close MySQL connection
+        $stmt->close();
+    }
+
+    // Query to select all customers
+    $sql = "SELECT surname, firstName, email, phoneNumber FROM customers";
+    $result = $conn->query($sql);
+
+    // Fetch data and store it in an array
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    // Convert the array to a JSON string and echo it out
+    echo json_encode($data);
+}
+
 $conn->close();
 ?>

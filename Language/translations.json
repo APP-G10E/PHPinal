@@ -78,7 +78,10 @@
         "endTime": "종료 시간:",
         "ticketPrice": "티켓 가격:",
         "festivalImage": "음악제 이미지:",
-        "add": "추가"
+        "add": "추가",
+        "userList": "사용자 목록",
+        "email": "이메일",
+        "phoneNumber": "전화번호"
     },
     "en": {
         "resend_code": "Resend the code",
@@ -158,7 +161,11 @@
         "endTime": "End Time:",
         "ticketPrice": "Ticket Price:",
         "festivalImage": "Festival Image:",
-        "add": "Add"
+        "add": "Add",
+        "userList": "User List",
+        "email": "Email",
+        "phoneNumber": "Phone Number",
+        "action": "Action"
     },
     "fr": {
         "resend_code": "Renvoyer le code",
@@ -219,7 +226,7 @@
         "partnerFestivalsList": "Liste des festivals en partenariat",
         "go_to_login": "Aller à la connexion",
         "footerRetour" : "X",
-        "selectionnerFestival": "Sélectionnez un festival",
+        "selectionnerFestival": "Sélectionner un festival",
         "cnko": "Chinois Coréen",
         "fr": "Français",
         "en": "Anglais",
@@ -238,6 +245,10 @@
         "endTime": "Heure de fin:",
         "ticketPrice": "Prix du billet:",
         "festivalImage": "Image du festival:",
-        "add": "Ajouter"
+        "add": "Ajouter",
+        "userList": "Liste des utilisateurs",
+        "email": "Email",
+        "phoneNumber": "Numéro de téléphone",
+        "action": "Action"
     }
 }

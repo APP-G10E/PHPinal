@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,8 +12,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/Assets/Favicon/favicon-16x16.png">
     <link rel="manifest" href="/Assets/Favicon/site.webmanifest">
 
-    <link rel="stylesheet" href="/CSS/global.css">
-    <link rel="stylesheet" href="/CSS/dashboard_organiser.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/dashboard_organiser.css">
 
     <script src="../Controller/popups.js"></script>
 </head>
@@ -38,18 +42,18 @@
 
 <body>
 <div id="body-container">
+    <div id="organiserText" class="translatable" data-translation-key="organiser"></div>
     <div id="navbar">
-        <div id="navbar-button" class="content-selector" data-tab="userList">Liste des utilisateurs</div>
-        <div id="navbar-button" class="content-selector" data-tab="addFestival">Ajouter un festival</div>
+        <div id="user-list-button" class="navbar-button translatable" data-translation-key="userList"
+             data-tab="userList"></div>
+        <div id="add-festival-button" class="navbar-button translatable" data-translation-key="addFestival"
+             data-tab="addFestival"></div>
+        <div id="select-festival-button" class="navbar-button translatable" data-translation-key="selectionnerFestival"
+             data-tab="selectionnerFestival"></div>
     </div>
-    <div id="content-container">
-        <div id="userList" class="tab-content">
-            <?php include 'customerList.php'; ?>
-        </div>
-        <div id="addFestival" class="tab-content">
-            <?php include 'createFestival.php'; ?>
-        </div>
-    </div>
+</div>
+<div id="mini-page-container">
+
 </div>
 </body>
 
@@ -58,5 +62,6 @@ include '../Styles/footer.php';
 ?>
 
 </html>
-<script src="../Controller/lang-select.js"></script>
+<script src="../Controller/mini-page-handler.js"></script>
 <script src="../Controller/dashboard_organiser.js"></script>
+<script src="../Controller/lang-select.js"></script>
