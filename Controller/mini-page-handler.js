@@ -122,6 +122,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('add-festival-button').addEventListener('click', function () {
         console.log("Affichage de l'ajout d'un festival");
 
+        document.getElementById('mini-page-container').style.justifyContent = 'center';
+
         let miniPageContainer = document.getElementById('mini-page-container');
         miniPageContainer.innerHTML = '';
 
@@ -129,51 +131,98 @@ document.addEventListener('DOMContentLoaded', function () {
         festivalForm.id = 'festival-form';
         festivalForm.enctype = 'multipart/form-data';
 
-        let festivalNameInput = document.createElement('input');
-        festivalNameInput.type = 'text';
-        festivalNameInput.name = 'festivalName';
-        festivalNameInput.required = true;
-        festivalNameInput.id = 'festivalName';
+        const labels = {
+            'en': {
+                'festivalName': 'Festival Name',
+                'beginTime': 'Begin Time',
+                'endTime': 'End Time',
+                'ticketPrice': 'Ticket Price',
+                'festivalImage': 'Festival Image'
+            },
+            'fr': {
+                'festivalName': 'Nom du Festival',
+                'beginTime': 'Date de Début',
+                'endTime': 'Date de Fin',
+                'ticketPrice': 'Prix du Billet',
+                'festivalImage': 'Image du Festival'
+            },
+            'cnko': {
+                'festivalName': '축제 이름',
+                'beginTime': '시작 날짜',
+                'endTime': '종료 날짜',
+                'ticketPrice': '티켓 가격',
+                'festivalImage': '축제 이미지'
+            }
+        };
 
-        let beginTimeInput = document.createElement('input');
-        beginTimeInput.type = 'date';
-        beginTimeInput.name = 'beginTime';
-        beginTimeInput.required = true;
-        beginTimeInput.id = 'beginTime';
+        const fields = [
+            {
+                type: 'text',
+                name: 'festivalName',
+                required: true,
+                id: 'festivalName',
+                label: labels[lang]['festivalName']
+            },
+            {type: 'date', name: 'beginTime', required: true, id: 'beginTime', label: labels[lang]['beginTime']},
+            {type: 'date', name: 'endTime', required: true, id: 'endTime', label: labels[lang]['endTime']},
+            {type: 'text', name: 'ticketPrice', required: true, id: 'ticketPrice', label: labels[lang]['ticketPrice']},
+            {
+                type: 'file',
+                name: 'festivalImage',
+                required: true,
+                id: 'festivalImage',
+                label: labels[lang]['festivalImage']
+            }
+        ];
 
-        let endTimeInput = document.createElement('input');
-        endTimeInput.type = 'date';
-        endTimeInput.name = 'endTime';
-        endTimeInput.required = true;
-        endTimeInput.id = 'endTime';
+        fields.forEach(field => {
+            const inputFieldDiv = document.createElement('div');
+            inputFieldDiv.className = 'input-field';
 
-        let ticketPriceInput = document.createElement('input');
-        ticketPriceInput.type = 'text';
-        ticketPriceInput.name = 'ticketPrice';
-        ticketPriceInput.required = true;
-        ticketPriceInput.id = 'ticketPrice';
+            const label = document.createElement('label');
+            label.htmlFor = field.id;
+            label.textContent = field.label;
 
-        let festivalImageInput = document.createElement('input');
-        festivalImageInput.type = 'file';
-        festivalImageInput.name = 'festivalImage';
-        festivalImageInput.required = true;
-        festivalImageInput.id = 'festivalImage';
+            const input = document.createElement('input');
+            input.type = field.type;
+            input.name = field.name;
+            input.required = field.required;
+            input.id = field.id;
 
-        let submitButton = document.createElement('input');
-        submitButton.type = 'submit';
-        submitButton.value = 'Ajouter';
+            inputFieldDiv.appendChild(label);
+            inputFieldDiv.appendChild(input);
+
+            festivalForm.appendChild(inputFieldDiv);
+        });
+
+        const submitButton = document.createElement('div');
+        if (lang === 'fr') {
+            submitButton.innerText = 'Ajouter';
+        } else if (lang === 'en') {
+            submitButton.innerText = 'Add';
+        } else if (lang === 'cnko') {
+            submitButton.innerText = '추가';
+        }
         submitButton.id = 'submit-button';
 
-        festivalForm.appendChild(festivalNameInput);
-        festivalForm.appendChild(beginTimeInput);
-        festivalForm.appendChild(endTimeInput);
-        festivalForm.appendChild(ticketPriceInput);
-        festivalForm.appendChild(festivalImageInput);
+        submitButton.style.fontFamily = 'Inter-Regular, serif';
+        submitButton.style.width = 'fit-content';
+        submitButton.style.padding = '1vh';
+        submitButton.style.marginBottom = '0.5vh';
+        submitButton.style.borderRadius = '5px';
+        submitButton.style.color = '#ffffff';
+        submitButton.style.background = '#00ADEF';
+        submitButton.style.cursor = 'pointer';
+        submitButton.style.display = 'flex';
+        submitButton.style.alignItems = 'center';
+        submitButton.style.justifyContent = 'center';
+
         festivalForm.appendChild(submitButton);
+        festivalForm.style.backgroundColor = '#1d1f27';
 
         miniPageContainer.appendChild(festivalForm);
 
-        festivalForm.addEventListener('submit', function (e) {
+        submitButton.addEventListener('click', function (e) {
             e.preventDefault();
 
             const data = {
@@ -432,7 +481,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         let selectedFestival = document.querySelector('.selected-festival');
                         if (selectedFestival) {
-                            // If the clicked festival is already selected, return early
                             if (selectedFestival === this) {
                                 return;
                             }
