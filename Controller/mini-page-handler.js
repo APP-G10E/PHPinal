@@ -289,13 +289,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     let festivalItem = document.createElement('div');
                     festivalItem.style.backgroundColor = '#1d1f27';
                     festivalItem.style.color = 'white';
-                    festivalItem.style.padding = '10px';
-                    festivalItem.style.margin = '10px';
+                    festivalItem.style.lineHeight = '1.5';
+
+                    festivalItem.style.paddingTop = '2vh';
+                    festivalItem.style.paddingBottom = '2vh';
+                    festivalItem.style.paddingLeft = '0.5vw';
+                    festivalItem.style.paddingRight = '0.5vw';
+
+                    festivalItem.style.marginTop = '2vh';
+                    festivalItem.style.marginBottom = '2vh';
+                    festivalItem.style.marginRight = '0.5vw';
+
                     festivalItem.style.width = 'fit-content';
                     festivalItem.style.display = 'flex';
                     festivalItem.style.flexDirection = 'column';
                     festivalItem.style.alignContent = 'center';
                     festivalItem.style.justifyContent = 'center';
+
                     festivalItem.style.cursor = 'pointer';
 
                     festivalItem.className = 'festival-item';
@@ -329,41 +339,25 @@ document.addEventListener('DOMContentLoaded', function () {
                         festivalImgInd = '축제 이미지: ';
                     }
 
-                    let festivalNameIndContainer = document.createElement('div');
-                    festivalNameIndContainer.innerText = festivalNameInd;
-                    festivalItem.appendChild(festivalNameIndContainer);
                     let festivalName = document.createElement('div');
-                    festivalName.innerText = festival.festivalName;
+                    festivalName.innerText = (festivalNameInd + '' + festival.festivalName);
                     festivalItem.appendChild(festivalName);
 
-                    let festivalBeginTimeIndContainer = document.createElement('div');
-                    festivalBeginTimeIndContainer.innerText = festivalBeginTimeInd;
-                    festivalItem.appendChild(festivalBeginTimeIndContainer);
-                    festivalBeginTimeIndContainer.style.whiteSpace = 'nowrap';
-                    let beginTime = document.createElement('div');
-                    beginTime.innerText = festival.beginTime;
-                    festivalItem.appendChild(beginTime);
+                    let festivalBeginTime = document.createElement('div');
+                    festivalBeginTime.innerText = (festivalBeginTimeInd + '' + festival.beginTime);
+                    festivalItem.appendChild(festivalBeginTime);
 
-                    let festivalEndTimeIndContainer = document.createElement('div');
-                    festivalEndTimeIndContainer.innerText = festivalEndTimeInd;
-                    festivalItem.appendChild(festivalEndTimeIndContainer);
-                    festivalEndTimeIndContainer.style.whiteSpace = 'nowrap';
-                    let endTime = document.createElement('div');
-                    endTime.innerText = festival.endTime;
-                    festivalItem.appendChild(endTime);
+                    let festivalEndTime = document.createElement('div');
+                    festivalEndTime.innerText = (festivalEndTimeInd + '' + festival.endTime);
+                    festivalItem.appendChild(festivalEndTime);
 
-                    let festivalTicketPriceIndContainer = document.createElement('div');
-                    festivalTicketPriceIndContainer.innerText = festivalTicketPriceInd;
-                    festivalItem.appendChild(festivalTicketPriceIndContainer);
-                    festivalTicketPriceIndContainer.style.whiteSpace = 'nowrap';
-                    let ticketPrice = document.createElement('div');
-                    ticketPrice.innerText = (festival.ticketPrice + '€');
-                    festivalItem.appendChild(ticketPrice);
+                    let festivalTicketPrice = document.createElement('div');
+                    festivalTicketPrice.innerText = (festivalTicketPriceInd + '' + festival.ticketPrice);
+                    festivalItem.appendChild(festivalTicketPrice);
 
                     let festivalImgIndContainer = document.createElement('div');
                     festivalImgIndContainer.innerText = festivalImgInd;
                     festivalItem.appendChild(festivalImgIndContainer);
-                    festivalImgIndContainer.style.whiteSpace = 'nowrap';
                     let festivalImage = document.createElement('img');
                     let festivalDataItem = 'IMG-PATH'
                     festivalImage.src = festival[festivalDataItem];
@@ -438,14 +432,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         let selectedFestival = document.querySelector('.selected-festival');
                         if (selectedFestival) {
+                            // If the clicked festival is already selected, return early
+                            if (selectedFestival === this) {
+                                return;
+                            }
                             selectedFestival.classList.remove('selected-festival');
                         }
 
                         this.classList.add('selected-festival');
                         console.log('Festival clicked: ', this.dataset.festivalId);
 
-
                         sensorElementsContainer.style.alignItems = 'flex-start';
+
+                        while (sensorElementsContainer.firstChild) {
+                            sensorElementsContainer.removeChild(sensorElementsContainer.firstChild);
+                        }
+
                         fetchSensorData(this.dataset.festivalId);
                     });
 
@@ -548,7 +550,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         let sensorElement = document.createElement('div');
                         sensorElement.style.backgroundColor = '#292e37';
-                        sensorElement.style.width = '30vw';
+                        sensorElement.style.width = '32vw';
 
                         sensorElement.style.marginTop = '1vh';
                         sensorElement.style.marginBottom = '1vh';
