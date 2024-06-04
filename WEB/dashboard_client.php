@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-
 <?php
 $page_title = "Home - EventsIT";
 $css_file = "homepage.css";
@@ -17,30 +14,31 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Get the customer ID from the URL
 $customerId = $conn->real_escape_string($_GET['customerId']);
 
+// Fetch customer information
 $sql = "SELECT firstName FROM customers WHERE customerId = '$customerId'";
 $result = $conn->query($sql);
 $user = $result->fetch_assoc();
 
 
-$sql = "SELECT surname, firstName, phoneNumber FROM customers WHERE customerId = ?";
-$stmt = $conn->prepare($sql);
+
+// Prepare and execute a statement to get the customer's associated festivals
+$stmt = $conn->prepare("SELECT f.festivalName FROM festival AS f INNER JOIN customerfestivals AS cf ON f.festivalId = cf.festivalId WHERE cf.customerId = ?");
 $stmt->bind_param("s", $customerId);
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc();
-
-$customerId = $_GET['customerId'];
-
+$festivals = [];
+while ($row = $result->fetch_assoc()) {
+    $festivals[] = $row['festivalName'];
+}
 
 $conn->close();
-
-$customer_id = $_GET['customerId'];
-$login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
-
-
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -53,10 +51,28 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
     <link rel="stylesheet" href="/CSS/global.css">
     <link rel="stylesheet" href="/CSS/dashboard_client.css">
 
-</head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const customerId = "<?php echo $customerId; ?>";
 
-<!--Pop-up validation des cookies-->
-<!--<script src="/Controller/cookies.js"></script>-->
+            const button = document.querySelector('.translatable.right-header-button[data-translation-key="back_to_HomePage"]');
+            const button2 = document.querySelector('.translatable.right-header-button[data-translation-key="Buy"]');
+
+            if (button) {
+                button.addEventListener('click', function () {
+                    const url = `homepage.php?customerId=${customerId}`;
+                    window.location.href = url;
+                });
+            }
+            if (button2) {
+                button2.addEventListener('click', function () {
+                    const url1 = `paiement.php?customerId=${customerId}`;
+                    window.location.href = url1;
+                });
+            }
+        });
+    </script>
+</head>
 
 <header>
     <div id="header-background"><img src="/Assets/fade_logo_banner.png" id="fade-logo-banner" alt="Logo Champions">
@@ -66,26 +82,8 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
         <img src="/Assets/Champion.png" id="logo-header" alt="Logo Champions">
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Retrieve PHP variables passed into JavaScript
-            const customerId = "<?php echo $customer_id; ?>";
-            const loginExpireTime = "<?php echo $login_expire_time; ?>";
-
-            const button = document.querySelector('.translatable.right-header-button[data-translation-key="back_to_HomePage"]');
-
-            if (button) {
-                button.addEventListener('click', function () {
-                    const url = `homepage.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}`;
-                    window.location.href = url;
-                });
-            }
-        });
-    </script>
-
     <div id="right-side-header">
         <div class="translatable header-hi-text" data-translation-key="headerHiText"></div>
-        <div class="header-hi-text" id="header-name" data-translation-key="headerName"></div>
         <div id="lang-select">
             <div class="dropdown">
                 <div class="dropbtn"><a id="flag1"></a></div>
@@ -95,24 +93,15 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
                 </div>
             </div>
         </div>
+        <div class="translatable right-header-button" data-translation-key="payment"></div>
 
         <div class="translatable right-header-button" data-translation-key="back_to_HomePage"></div>
 
         <div id="editProfileButton" class="translatable right-header-button" data-translation-key="editProfile"
              onclick="showFestivalList()"></div>
 
-        <script>
-            function showFestivalList() {
-                document.getElementById("festival-popup").style.display = "block";
-                document.getElementById("festival-popup").style.overflow = "hidden";
-            }
-
-            function hideFestivalList() {
-                document.getElementById("festival-popup").style.display = "none";
-            }
-        </script>
-
         <div class="translatable right-header-button" data-translation-key="disconnection"></div>
+
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const button = document.querySelector('.translatable.right-header-button[data-translation-key="disconnection"]');
@@ -124,14 +113,13 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
             });
         </script>
 
-
     </div>
 </header>
 
 <body>
 <div id="spectateur-container">
     <div class="translatable bjrSpectateur" data-translation-key="hello"></div>
-    <div class="bjrSpectateur" id="bjrSpectateur"> <?php echo '&nbsp;' . htmlspecialchars($user['firstName']); ?></div>
+    <div class="bjrSpectateur" id="bjrSpectateur"><?php echo '&nbsp;' . htmlspecialchars($user['firstName']); ?></div>
 </div>
 <div id="body-container">
     <div id="festival-banner-container">
@@ -144,27 +132,25 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
             <label for="festival-recherche"></label><input type="text" class="translatable" id="festival-recherche"
                                                            data-translation-key="festivalRecherche">
 
+
+
+
             <p class="translatable" data-translation-key="festivalsRecherchesTitre" id="festivals-recherches-titre"></p>
             <div id="festivals-populaires">
-                <div class="festival-populaire" id="festival-populaire-1">
-                    <p>Solidays</p>
-                    <p>🟢</p>
-                </div>
-                <div class="festival-populaire" id="festival-populaire-2">
-                    <p>We Love Green</p>
-                    <p>⭕</p>
-                </div>
-                <div class="festival-populaire" id="festival-populaire-3">
-                    <p>Lollapalooza</p>
-                    <p>⭕</p>
-                </div>
-                <div class="festival-populaire" id="festival-populaire-4">
-                    <p>Garo Rock</p>
-                    <p>🟢</p>
-                </div>
+                <?php if (empty($festivals)): ?>
+                    <div class="translatable festival-populaire" id="proceedPayment" data-translation-key="proceedPayment" >
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($festivals as $festival): ?>
+                        <div class="festival-populaire">
+                            <p><?php echo htmlspecialchars($festival); ?></p>
+                            <p>🟢</p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
-            <div id="festivals-partenaires-liste" class="translatable lien-precisions"
-                 data-translation-key="festivalsPartenairesListe"><p></p></div>
+            <div id="festivals-partenaires-liste" class="translatable lien-precisions" data-translation-key="festivalsPartenairesListe"><p></p></div>
+
         </div>
 
         <div id="festival-capteurs-container">
@@ -181,10 +167,25 @@ $login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
 <script src="../Controller/popups.js"></script>
 </body>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Retrieve PHP variables passed into JavaScript
+        const customerId = "<?php echo $customerId; ?>";
+
+        const button = document.querySelector('.translatable.festival-populaire[data-translation-key="proceedPayment"]');
+
+        if (button) {
+            button.addEventListener('click', function () {
+                const url = `paiement.php?customerId=${customerId}`;
+                window.location.href = url;
+            });
+        }
+    });
+</script>
+
 <?php
 include '../Styles/footer.php';
 ?>
-
 
 <div id="festival-popup" class="popup">
     <div class="popup-content">
@@ -212,12 +213,5 @@ include '../Styles/footer.php';
     </div>
 </div>
 
-
 </html>
 <script src="../Controller/lang-select.js"></script>
-
-<!--
-Faire la liste des festivals populaires
--->
-
-
