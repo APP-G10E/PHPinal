@@ -1,7 +1,7 @@
 <footer>
     <img src="../Assets/Champion.png" alt="logo" id="logo-foot">
     <div class="container-liens">
-        <div><div class="footer-link translatable" data-translation-key="footerCookieSettings"></div></div>
+        <div><div class="footer-link translatable" data-translation-key="footerCookieSettings" id="footerCookieSettings"></div></div>
         <div><div class="footer-link translatable" id="footerProtectionDonnees" data-translation-key="footerDataProtection"></div></div>
         <div><div class="footer-link translatable" id="footerMentionsLegales" data-translation-key="footerLegalNotice"></div></div>
         <div><div class="footer-link translatable" id="footerCGV" data-translation-key="footerCGV"></div></div>
