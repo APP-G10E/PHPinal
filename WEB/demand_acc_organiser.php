@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert organiser data into database
-    $sql = "INSERT INTO organisers (organiserId, firstName, surname, email, password, phoneNumber, raison, verified)
+    $sql = "INSERT INTO organisers (organiserId, firstName, surname, email, password, phoneNumber, reason, verified)
             VALUES ('$organiserId', '$firstName', '$surname', '$email', '$hashedPassword', '$phoneNumber', '$raison', 0)";
 
     if ($conn->query($sql) === TRUE) {
