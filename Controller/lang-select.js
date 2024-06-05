@@ -8,21 +8,17 @@ function changeLanguageAndReload(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
-    // Check if 'lang' parameter is present in the URL
     const urlParams = new URLSearchParams(window.location.search);
     let lang = urlParams.get('lang');
 
     if (!lang) {
-        // If 'lang' is not in the URL, get it from localStorage, cookies, or default to 'fr'
         lang = urlParams.get('lang') || localStorage.getItem('lang') || document.documentElement.lang || 'fr';
 
 
-        // Add 'lang' parameter to the URL and reload the page
         const url = new URL(window.location.href);
         url.searchParams.set('lang', lang);
         window.location.href = url.toString();
     } else {
-        // If 'lang' is already in the URL, proceed with fetching translations
         const translations = await fetchTranslations();
         if (translations) {
             initializePage(translations);
@@ -46,17 +42,13 @@ async function fetchTranslations() {
 }
 
 function initializePage(translations) {
-    // Extract language from URL
     const urlParams = new URLSearchParams(window.location.search);
     let lang = urlParams.get('lang') || localStorage.getItem('lang') || document.documentElement.lang || 'fr';
 
-    // Set the lang attribute of <html> element
     document.documentElement.lang = lang;
 
     changeLanguage(translations, lang);
     setupFlags(lang);
-
-    // Add your additional initialization code here
 }
 
 function setupFlags(lang) {
