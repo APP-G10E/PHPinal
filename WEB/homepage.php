@@ -38,10 +38,11 @@ include '../Styles/head.php';
             }
 
             const customerId = getQueryParam('customerId');
+            const organiserId = getQueryParam('organiserId');
             const loginExpireTime = getQueryParam('loginExpireTime');
             const lang = getQueryParam('lang');
 
-            if (customerId) {
+            if (customerId || organiserId) {
                 const rightSideHeader = document.getElementById('right-side-header');
                 const signUpLink = document.getElementById('sign-up-link');
                 const loginLink = document.getElementById('login-link');
@@ -53,9 +54,13 @@ include '../Styles/head.php';
                 dashboardButton.id = 'dashboard-button';
                 dashboardButton.className = 'translatable right-header-button';
                 dashboardButton.dataset.translationKey = 'dashboard';
-                //dashboardButton.textContent = 'Go to Dashboard';
 
-                const url = `dashboard_client.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}&lang=${lang}`;
+                let url;
+                if (customerId) {
+                    url = `dashboard_client.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}&lang=${lang}`;
+                } else if (organiserId) {
+                    url = `dashboard_organiser.php?organiserId=${organiserId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}&lang=${lang}`;
+                }
 
                 dashboardButton.addEventListener('click', function () {
                     window.location.href = url;
@@ -65,6 +70,7 @@ include '../Styles/head.php';
             }
         });
     </script>
+
 </header>
 
 <body>
