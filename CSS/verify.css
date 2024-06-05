@@ -97,6 +97,7 @@ Footer
 
 #searchBar {
     display: flex;
+    flex-direction: column;
     width: fit-content;
     height: fit-content;
     align-content: baseline;
@@ -114,5 +115,20 @@ Footer
 }
 
 th, td {
-   border: 1px solid lightgrey;
+    border: 1px solid lightgrey;
+}
+
+.date-input {
+    display: block;
+}
+
+.input-fields, .button-fields {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+#clear-button, #search-button {
+    width: fit-content;
+    margin: 0 0.5vw 0 0.5vw;
 }

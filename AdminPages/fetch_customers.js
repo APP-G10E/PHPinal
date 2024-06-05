@@ -4,7 +4,10 @@ document.querySelector('#search-button').addEventListener('click', function () {
         'surname': document.getElementById('surname-input').value,
         'email': document.getElementById('email-input').value,
         'phone_number': document.getElementById('phone-number-input').value,
-        'verified': document.getElementById('verified-select').value
+        'verified': document.getElementById('verified-select').value,
+        'customer_id': document.getElementById('customer-id-input').value,
+        'expire_date_start': document.getElementById('expire-date-start-input').value,
+        'expire_date_end': document.getElementById('expire-date-end-input').value
     };
 
     if (data.verified === "x") {
@@ -32,12 +35,18 @@ document.querySelector('#search-button').addEventListener('click', function () {
             let thFirstName = document.createElement('th');
             let thPhoneNumber = document.createElement('th');
             let thVerified = document.createElement('th');
+            let thCustomerId = document.createElement('th');
+            let thExpireDate = document.createElement('th');
 
             thEmail.innerText = 'E-mail';
             thSurname.innerText = 'Nom de famille';
             thFirstName.innerText = 'Prénom';
             thPhoneNumber.innerText = 'Numéro de téléphone';
             thVerified.innerText = 'Verifié';
+            thCustomerId.innerText = 'Customer ID';
+            thExpireDate.innerText = 'Expire Date';
+            legend.appendChild(thCustomerId);
+            legend.appendChild(thExpireDate);
 
             legend.appendChild(thEmail);
             legend.appendChild(thSurname);
@@ -55,12 +64,14 @@ document.querySelector('#search-button').addEventListener('click', function () {
 
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                <td>${customer.email}</td>
-                <td>${customer.surname}</td>
-                <td>${customer.firstName}</td>
-                <td>${customer.phoneNumber}</td>
-                <td>${customer.verified}</td>
-            `;
+            <td>${customer.customerId}</td>
+            <td>${customer.subscriptionExpireDate}</td>
+            <td>${customer.email}</td>
+            <td>${customer.surname}</td>
+            <td>${customer.firstName}</td>
+            <td>${customer.phoneNumber}</td>
+            <td>${customer.verified}</td>
+        `;
                     tbody.appendChild(tr);
                 }
             });
@@ -72,4 +83,18 @@ document.querySelector('#search-button').addEventListener('click', function () {
     xhr.onerror = function () {
         console.log('Request failed');
     };
+
+    document.getElementById('clear-button').addEventListener('click', function () {
+        document.getElementById('first-name-input').value = '';
+        document.getElementById('surname-input').value = '';
+        document.getElementById('email-input').value = '';
+        document.getElementById('phone-number-input').value = '';
+        document.getElementById('verified-select').value = 'x';
+        document.getElementById('customer-id-input').value = '';
+        document.getElementById('expire-date-start-input').value = '';
+        document.getElementById('expire-date-end-input').value = '';
+
+        let tbody = document.getElementById('tbody');
+        tbody.innerHTML = '';
+    });
 });
