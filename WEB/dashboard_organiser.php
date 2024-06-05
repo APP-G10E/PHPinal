@@ -1,5 +1,21 @@
 <?php
+$page_title = "Dashboard - EventsIT";
+$organiserId = $_GET['organiserId'];
+include '../Styles/head.php';
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "app_g10e";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get the customer ID from the URL
+$organiserId = $conn->real_escape_string($_GET['organiserId']);
+$login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +52,34 @@
                 </div>
             </div>
         </div>
+        <div class="translatable right-header-button" data-translation-key="back_to_HomePage"></div>
         <div class="translatable right-header-button" data-translation-key="disconnection"></div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const button = document.querySelector('.translatable.right-header-button[data-translation-key="disconnection"]');
+                if (button) {
+                    button.addEventListener('click', function () {
+                        window.location.href = 'homepage.php';
+                    });
+                }
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const organiserId = "<?php echo $organiserId; ?>";
+                const loginExpireTime = "<?php echo $login_expire_time; ?>";
+
+                const button = document.querySelector('.translatable.right-header-button[data-translation-key="back_to_HomePage"]');
+
+                if (button) {
+                    button.addEventListener('click', function () {
+                        const url = `homepage.php?organiserId=${organiserId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}`;
+                        window.location.href = url;
+                    });
+                }
+            });
+        </script>
     </div>
 </header>
 
