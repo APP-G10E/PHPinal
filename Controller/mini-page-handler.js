@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Affichage de la liste des utilisateurs");
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '../WEB/customerList.php', true);
+        xhr.open('POST', '../Controller/customerList.php', true);
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.send('onlyFetch=true');
         xhr.onload = function () {
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('festivalImage', festivalImage);
 
             let xhr = new XMLHttpRequest();
-            xhr.open('POST', '../WEB/createFestival.php', true);
+            xhr.open('POST', '../Controller/createFestival.php', true);
             xhr.onload = function () {
                 if (this.status === 200) {
                     console.log("Festival created successfully");
