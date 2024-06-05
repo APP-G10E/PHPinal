@@ -13,12 +13,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['festivalId'])) {
         $festivalId = $conn->real_escape_string($_POST['festivalId']);
 
-        $sql = "DELETE FROM festival WHERE festivalId = '$festivalId'";
+        $sql = "SELECT * FROM festival WHERE festivalId = '$festivalId'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $festival = $result->fetch_assoc();
 
-        if ($conn->query($sql) === TRUE) {
-            echo "Festival deleted successfully";
+            $imagePath = $festival['IMG-PATH'];
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+
+            $sql = "DELETE FROM festival WHERE festivalId = '$festivalId'";
+            if ($conn->query($sql) === TRUE) {
+                echo "Festival deleted successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Festival not found";
         }
     }
 }

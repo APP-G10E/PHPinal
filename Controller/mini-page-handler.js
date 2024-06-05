@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('add-festival-button').addEventListener('click', function () {
         console.log("Affichage de l'ajout d'un festival");
+        let successMessage = document.createElement('div');
 
         document.getElementById('mini-page-container').style.justifyContent = 'center';
 
@@ -223,7 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
         festivalForm.appendChild(submitButton);
         festivalForm.style.backgroundColor = '#1d1f27';
 
-        let successMessage = document.createElement('div');
         successMessage.style.color = 'green';
         successMessage.style.fontFamily = 'Inter-Regular, serif';
         successMessage.style.marginTop = '1vh';
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const festivalImage = document.getElementById('festivalImage').files[0];
 
-            if (!validateImage(festivalImage)) {
+            if (!validateImage(festivalImage, successMessage)) {
                 return;
             }
 
@@ -262,10 +262,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     if (lang === 'fr') {
                         successMessage.innerText = 'Festival créé avec succès';
+                        successMessage.style.color = 'green';
                     } else if (lang === 'en') {
                         successMessage.innerText = 'Festival created successfully';
+                        successMessage.style.color = 'green';
                     } else if (lang === 'cnko') {
                         successMessage.innerText = '축제가 성공적으로 생성되었습니다';
+                        successMessage.style.color = 'green';
                     }
                 } else {
                     console.log('Error status: ' + this.status);
@@ -798,16 +801,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    function validateImage(file) {
+    function validateImage(file, successMessage) {
         const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
-        const maxFileSize = 500000; // 500KB
+        const maxFileSize = 5000000; // 5MB
 
         if (!validImageTypes.includes(file.type)) {
-            console.log('Invalid file type. Only JPG, JPEG, PNG & GIF files are allowed.');
+            if (lang === 'fr') {
+                successMessage.innerText = 'Type de fichier invalide';
+                successMessage.style.color = 'red';
+            } else if (lang === 'en') {
+                successMessage.innerText = 'Invalid file type';
+                successMessage.style.color = 'red';
+            } else if (lang === 'cnko') {
+                successMessage.innerText = '잘못된 파일 유형';
+                successMessage.style.color = 'red';
+            }
+            console.log('Invalid file type.');
             return false;
         }
 
         if (file.size > maxFileSize) {
+            if (lang === 'fr') {
+                successMessage.innerText = 'Image trop lourde : 5MB maximum';
+                successMessage.style.color = 'red';
+            } else if (lang === 'en') {
+                successMessage.innerText = 'Image too large: 5MB maximum';
+                successMessage.style.color = 'red';
+            } else if (lang === 'cnko') {
+                successMessage.innerText = '이미지가 너무 큼 : 최대 5MB';
+                successMessage.style.color = 'red';
+            }
             console.log('File is too large. Maximum size is 500KB.');
             return false;
         }

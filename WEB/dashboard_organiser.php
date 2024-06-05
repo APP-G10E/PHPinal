@@ -106,5 +106,4 @@ include '../Styles/footer.php';
 
 </html>
 <script src="../Controller/mini-page-handler.js"></script>
-<script src="../Controller/dashboard_organiser.js"></script>
 <script src="../Controller/lang-select.js"></script>

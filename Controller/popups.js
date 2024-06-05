@@ -56,7 +56,11 @@ document.addEventListener('DOMContentLoaded', function () {
             popUp(popups[lang]['htmlRisquesAuditifs']);
         });
 
-        document.querySelector('[data-translation-key="footerCookieSettings"]').addEventListener('click', function () {
+        document.getElementById('footerCookieSettings').addEventListener('click', function () {
+            console.log('footerCookieSettings clicked');
+            console.log('lang:', lang);
+            console.log('popups[lang]:', popups[lang]);
+            console.log('popups[lang][\'htmlCookies\']:', popups[lang]['htmlCookies']);
             cookies(popups[lang]['htmlCookies']);
         });
 
