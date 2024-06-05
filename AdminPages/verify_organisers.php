@@ -174,19 +174,32 @@ if ($result->num_rows > 0) {
     <h2>Rechercher un utilisateur</h2>
 
     <div id="searchBar">
-        <label for="first-name-input"></label><input type="text" class="searchField" id="first-name-input"
-                                                     placeholder="Prénom">
-        <label for="surname-input"></label><input type="text" class="searchField" id="surname-input"
-                                                  placeholder="Nom de famille">
-        <label for="email-input"></label><input type="text" class="searchField" id="email-input" placeholder="E-mail">
-        <label for="phone-number-input"></label><input type="text" class="searchField" id="phone-number-input"
-                                                       placeholder="N° de téléphone">
-        <label for="verified-select"></label><select class="searchField" id="verified-select">
-            <option value="1">Vérifié</option>
-            <option value="0">Pas vérifié</option>
-            <option value="x" selected="selected">..</option>
-        </select>
-        <button id="search-button">Rechercher</button>
+        <div class="input-fields">
+            <label for="first-name-input"></label><input type="text" class="searchField" id="first-name-input"
+                                                         placeholder="Prénom">
+            <label for="surname-input"></label><input type="text" class="searchField" id="surname-input"
+                                                      placeholder="Nom de famille">
+            <label for="email-input"></label><input type="text" class="searchField" id="email-input"
+                                                    placeholder="E-mail">
+            <label for="phone-number-input"></label><input type="text" class="searchField" id="phone-number-input"
+                                                           placeholder="N° de téléphone">
+            <label for="customer-id-input"></label><input type="text" class="searchField" id="customer-id-input"
+                                                          placeholder="Customer ID">
+            <label for="expire-date-start-input"></label><input type="date" class="searchField date-input"
+                                                                id="expire-date-start-input"
+                                                                placeholder="Expire Date Start">
+            <label for="expire-date-end-input"></label><input type="date" class="searchField date-input"
+                                                              id="expire-date-end-input" placeholder="Expire Date End">
+            <label for="verified-select"></label><select class="searchField" id="verified-select">
+                <option value="1">Vérifié</option>
+                <option value="0">Pas vérifié</option>
+                <option value="x" selected="selected">..</option>
+            </select>
+        </div>
+        <div class="button-fields">
+            <button id="clear-button">Clear</button>
+            <button id="search-button">Rechercher</button>
+        </div>
     </div>
 
     <div id="tbody"></div>
