@@ -119,7 +119,7 @@ if ($result->num_rows > 0) {
     </script>
 </head>
 <body>
-<h2>Demandes de compte organisateur</h2>
+<h2>Demandes de comptes organisateur</h2>
 <table>
     <thead>
     <tr>
@@ -174,8 +174,10 @@ if ($result->num_rows > 0) {
     <h2>Rechercher un utilisateur</h2>
 
     <div id="searchBar">
-        <label for="first-name-input"></label><input type="text" class="searchField" id="first-name-input" placeholder="Prénom">
-        <label for="surname-input"></label><input type="text" class="searchField" id="surname-input" placeholder="Nom de famille">
+        <label for="first-name-input"></label><input type="text" class="searchField" id="first-name-input"
+                                                     placeholder="Prénom">
+        <label for="surname-input"></label><input type="text" class="searchField" id="surname-input"
+                                                  placeholder="Nom de famille">
         <label for="email-input"></label><input type="text" class="searchField" id="email-input" placeholder="E-mail">
         <label for="phone-number-input"></label><input type="text" class="searchField" id="phone-number-input"
                                                        placeholder="N° de téléphone">
@@ -193,5 +195,10 @@ if ($result->num_rows > 0) {
     <script src="../Controller/footerTextHandler.js"></script>
 </div>
 
+<h2>Formulaire de contact</h2>
+
+<div id="contacts-container"></div>
+
+<script src="fetch_contact_us.js"></script>
 </body>
 </html>
