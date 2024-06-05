@@ -169,7 +169,7 @@ $conn->close();
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            <div id="festivals-partenaires-liste" class="translatable lien-precisions" data-translation-key="festivalsPartenairesListe"><p></p></div>
+            <div id="festivals-partenaires-liste" class="translatable lien-precisions" onclick="showFestivals()" data-translation-key="festivalsPartenairesListe"><p></p></div>
 
         </div>
 
@@ -232,6 +232,58 @@ include '../Styles/footer.php';
         </form>
     </div>
 </div>
+
+
+
+<div id="festival-popup-list" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hideFestivals()">&times;</span>
+        <h3>Festivals</h3>
+        <div class="festival-table">
+            <div class="table-header">
+                <div class="cell">Name</div>
+                <div class="cell">Begin Time</div>
+                <div class="cell">End Time</div>
+                <div class="cell">Ticket Price</div>
+            </div>
+            <div class="table-body">
+                <?php
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT festivalName, beginTime, endTime, ticketPrice FROM festival";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<div class='table-row'>";
+                        echo "<div class='cell'>" . htmlspecialchars($row['festivalName']) . "</div>";
+                        echo "<div class='cell'>" . $row['beginTime'] . "</div>";
+                        echo "<div class='cell'>" . $row['endTime'] . "</div>";
+                        echo "<div class='cell'>" . $row['ticketPrice'] . "</div>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<div class='table-row'><div class='cell' colspan='4'>Aucun festival disponible.</div></div>";
+                }
+                $conn->close();
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showFestivals() {
+        document.getElementById("festival-popup-list").style.display = "block";
+    }
+
+    function hideFestivals() {
+        document.getElementById("festival-popup-list").style.display = "none";
+    }
+</script>
 
 </html>
 <script src="../Controller/lang-select.js"></script>

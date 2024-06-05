@@ -52,10 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
             popUp(popups[lang]['htmlFAQ']);
         });
 
-        document.getElementById('festivals-partenaires-liste').addEventListener('click', function () {
-            popUp(popups[lang]['htmlFestivalsPartenaires']);
-        });
-
         document.getElementById('risques-son').addEventListener('click', function () {
             popUp(popups[lang]['htmlRisquesAuditifs']);
         });
