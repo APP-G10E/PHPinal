@@ -1,5 +1,3 @@
-createFestival.php
-
 <?php
 $servername = "localhost";
 $username = "root";
@@ -12,62 +10,35 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$messages = array();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['add'])) {
-        // Handle add event
+    if (isset($_POST['festivalName'])) {
         $festivalName = $conn->real_escape_string($_POST['festivalName']);
         $beginTime = $conn->real_escape_string($_POST['beginTime']);
         $endTime = $conn->real_escape_string($_POST['endTime']);
         $ticketPrice = $conn->real_escape_string($_POST['ticketPrice']);
 
-        // Handle file upload
         $target_dir = "../Assets/";
-        $target_file = $target_dir . basename($_FILES["festivalImage"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $festivalImageName = basename($_FILES["festivalImage"]["name"]);
+        $target_file = $target_dir . $festivalImageName;
 
-        $check = getimagesize($_FILES["festivalImage"]["tmp_name"]);
-        if ($check !== false) {
-            $uploadOk = 1;
+        if (move_uploaded_file($_FILES["festivalImage"]["tmp_name"], $target_file)) {
+            $messages[] = "The file " . $festivalImageName . " has been uploaded.";
         } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
+            $messages[] = "Sorry, there was an error uploading your file.";
         }
 
-        if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
+        $sql = "INSERT INTO festival (festivalId, festivalName, beginTime, endTime, ticketPrice, `IMG-PATH`) VALUES ('$festivalId','$festivalName', '$beginTime', '$endTime', '$ticketPrice', '$target_file')";
 
-        if ($_FILES["festivalImage"]["size"] > 500000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+        if ($conn->query($sql) === TRUE) {
+            $messages[] = "Festival added successfully";
         } else {
-            if (move_uploaded_file($_FILES["festivalImage"]["tmp_name"], $target_file)) {
-                echo "The file " . basename($_FILES["festivalImage"]["name"]) . " has been uploaded.";
-
-                $sql = "INSERT INTO festival (festivalId, festivalName, beginTime, endTime, ticketPrice, `IMG-PATH`) VALUES ('$festivalId','$festivalName', '$beginTime', '$endTime', '$ticketPrice', '$target_file')";
-
-                if ($conn->query($sql) === TRUE) {
-                    echo "";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
+            $messages[] = "Error: " . $sql . "<br>" . $conn->error;
         }
     }
 }
+echo json_encode($messages);
 
 $conn->close();
 ?>
