@@ -220,29 +220,50 @@ document.addEventListener('DOMContentLoaded', function () {
         festivalForm.appendChild(submitButton);
         festivalForm.style.backgroundColor = '#1d1f27';
 
+        let successMessage = document.createElement('div');
+        successMessage.style.color = 'green';
+        successMessage.style.fontFamily = 'Inter-Regular, serif';
+        successMessage.style.marginTop = '1vh';
+
+        festivalForm.appendChild(successMessage);
+
         miniPageContainer.appendChild(festivalForm);
 
         submitButton.addEventListener('click', function (e) {
             e.preventDefault();
 
-            const data = {
-                'festivalName': document.getElementById('festivalName').value,
-                'beginTime': document.getElementById('beginTime').value,
-                'endTime': document.getElementById('endTime').value,
-                'ticketPrice': document.getElementById('ticketPrice').value,
-                'festivalImage': document.getElementById('festivalImage').files[0]
-            };
+            const festivalImage = document.getElementById('festivalImage').files[0];
 
-            console.log("data: ", data);
+            if (!validateImage(festivalImage)) {
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append('festivalName', document.getElementById('festivalName').value);
+            formData.append('beginTime', document.getElementById('beginTime').value);
+            formData.append('endTime', document.getElementById('endTime').value);
+            formData.append('ticketPrice', document.getElementById('ticketPrice').value);
+            formData.append('festivalImage', festivalImage);
 
             let xhr = new XMLHttpRequest();
             xhr.open('POST', '../WEB/createFestival.php', true);
-            xhr.setRequestHeader('Content-type', 'application/json');
-            xhr.send(JSON.stringify(data));
             xhr.onload = function () {
                 if (this.status === 200) {
                     console.log("Festival created successfully");
-                    document.getElementById('select-festival-button').click();
+                    console.log("response: ", this.responseText);
+
+                    let response = JSON.parse(this.responseText);
+                    for (let i = 0; i < response.length; i++) {
+                        console.log(response[i]);
+                    }
+
+                    if (lang === 'fr') {
+                        successMessage.innerText = 'Festival créé avec succès';
+                    } else if (lang === 'en') {
+                        successMessage.innerText = 'Festival created successfully';
+                    } else if (lang === 'cnko') {
+                        successMessage.innerText = '축제가 성공적으로 생성되었습니다';
+                    }
                 } else {
                     console.log('Error status: ' + this.status);
                 }
@@ -250,23 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.onerror = function () {
                 console.log('Request failed');
             };
-
-            let formData = new FormData();
-            formData.append('festivalImage', document.getElementById('festivalImage').files[0]);
-
-            let xhrFile = new XMLHttpRequest();
-            xhrFile.open('POST', '../WEB/createFestival.php', true);
-            xhrFile.onload = function () {
-                if (this.status === 200) {
-                    console.log("Festival image uploaded successfully");
-                } else {
-                    console.log('Error status: ' + this.status);
-                }
-            };
-            xhrFile.onerror = function () {
-                console.log('Request failed');
-            };
-            xhrFile.send(formData);
+            xhr.send(formData);
         });
     });
 
@@ -401,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     festivalItem.appendChild(festivalEndTime);
 
                     let festivalTicketPrice = document.createElement('div');
-                    festivalTicketPrice.innerText = (festivalTicketPriceInd + '' + festival.ticketPrice);
+                    festivalTicketPrice.innerText = (festivalTicketPriceInd + '' + festival.ticketPrice + ' €');
                     festivalItem.appendChild(festivalTicketPrice);
 
                     let festivalImgIndContainer = document.createElement('div');
@@ -666,6 +671,23 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('sensor-elements-container').remove();
         });
     });
+
+    function validateImage(file) {
+        const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+        const maxFileSize = 500000; // 500KB
+
+        if (!validImageTypes.includes(file.type)) {
+            console.log('Invalid file type. Only JPG, JPEG, PNG & GIF files are allowed.');
+            return false;
+        }
+
+        if (file.size > maxFileSize) {
+            console.log('File is too large. Maximum size is 500KB.');
+            return false;
+        }
+
+        return true;
+    }
 
     function getSoundColor(soundValue) {
         if (soundValue > 100) {
