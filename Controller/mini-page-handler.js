@@ -189,6 +189,9 @@ document.addEventListener('DOMContentLoaded', function () {
             input.required = field.required;
             input.id = field.id;
 
+            input.style.width = '90%';
+            input.style.border = '1px solid #2c2f36';
+
             inputFieldDiv.appendChild(label);
             inputFieldDiv.appendChild(input);
 
@@ -355,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     festivalItem.style.marginRight = '0.5vw';
 
                     festivalItem.style.width = 'fit-content';
+                    festivalItem.style.height = 'fit-content';
                     festivalItem.style.display = 'flex';
                     festivalItem.style.flexDirection = 'column';
                     festivalItem.style.alignContent = 'center';
@@ -423,41 +427,110 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
                     const editButton = document.createElement('button');
+                    editButton.id = 'edit-button';
                     editButton.textContent = 'Edit';
+                    if (lang === 'fr') {
+                        editButton.textContent = 'Modifier';
+                    } else if (lang === 'en') {
+                        editButton.textContent = 'Edit';
+                    } else if (lang === 'cnko') {
+                        editButton.textContent = '편집';
+                    }
                     editButton.addEventListener('click', function () {
                         let existingForm = document.getElementById('festival-edit-form');
-                        if (existingForm) {
-                            existingForm.remove();
+
+                        festivalItem.style.width = '300px';
+                        festivalItem.style.overflowX = 'hidden';
+
+
+                        if (this.id === 'cancel-button') {
+                            if (existingForm) {
+                                existingForm.remove();
+                            }
+                            this.id = 'edit-button';
+                            if (lang === 'fr') {
+                                this.textContent = 'Modifier';
+                            } else if (lang === 'en') {
+                                this.textContent = 'Edit';
+                            } else if (lang === 'cnko') {
+                                this.textContent = '편집';
+                            }
+                            return;
+                        }
+
+                        if (this.id === 'edit-button') {
+                            this.id = 'cancel-button';
+
+                            if (lang === 'fr') {
+                                this.textContent = 'Annuler';
+                            } else if (lang === 'en') {
+                                this.textContent = 'Cancel';
+                            } else if (lang === 'cnko') {
+                                this.textContent = '취소';
+                            }
+                        } else {
+                            this.id = 'edit-button';
+
+                            if (lang === 'fr') {
+                                this.textContent = 'Modifier';
+                            } else if (lang === 'en') {
+                                this.textContent = 'Edit';
+                            } else if (lang === 'cnko') {
+                                this.textContent = '편집';
+                            }
                         }
 
                         const festivalEditForm = document.createElement('form');
                         festivalEditForm.id = 'festival-edit-form';
-                        festivalEditForm.action = '../Controller/editFestival.php';
                         festivalEditForm.method = 'post';
+                        festivalEditForm.style.marginTop = '0';
+                        festivalEditForm.style.marginBottom = '0';
+                        festivalEditForm.style.display = 'flex';
+                        festivalEditForm.style.flexDirection = 'column';
+                        festivalEditForm.style.alignItems = 'center';
+                        festivalEditForm.style.justifyContent = 'flex-start';
+                        festivalEditForm.style.height = 'fit-content';
 
                         let festivalIdInput = document.createElement('input');
                         festivalIdInput.type = 'hidden';
                         festivalIdInput.name = 'festivalId';
+                        festivalIdInput.style.border = '1px solid #2c2f36';
+                        festivalIdInput.style.fontFamily = 'Inter-Regular, serif';
 
                         let festivalNameInput = document.createElement('input');
                         festivalNameInput.type = 'text';
                         festivalNameInput.name = 'festivalName';
+                        festivalNameInput.style.border = '1px solid #2c2f36';
+                        festivalNameInput.style.fontFamily = 'Inter-Regular, serif';
 
                         let beginTimeInput = document.createElement('input');
                         beginTimeInput.type = 'date';
                         beginTimeInput.name = 'beginTime';
+                        beginTimeInput.style.border = '1px solid #2c2f36';
+                        beginTimeInput.style.fontFamily = 'Inter-Regular, serif';
 
                         let endTimeInput = document.createElement('input');
                         endTimeInput.type = 'date';
                         endTimeInput.name = 'endTime';
+                        endTimeInput.style.border = '1px solid #2c2f36';
+                        endTimeInput.style.fontFamily = 'Inter-Regular, serif';
 
                         let ticketPriceInput = document.createElement('input');
                         ticketPriceInput.type = 'text';
                         ticketPriceInput.name = 'ticketPrice';
+                        ticketPriceInput.style.border = '1px solid #2c2f36';
+                        ticketPriceInput.style.fontFamily = 'Inter-Regular, serif';
 
                         let submitButton = document.createElement('input');
                         submitButton.type = 'submit';
                         submitButton.value = 'Update';
+                        submitButton.style.fontFamily = 'Inter-Regular, serif';
+
+                        festivalIdInput.value = festival.festivalId;
+                        festivalNameInput.value = festival.festivalName;
+                        beginTimeInput.value = festival.beginTime;
+                        endTimeInput.value = festival.endTime;
+                        ticketPriceInput.value = festival.ticketPrice;
 
                         festivalEditForm.appendChild(festivalIdInput);
                         festivalEditForm.appendChild(festivalNameInput);
@@ -473,6 +546,58 @@ document.addEventListener('DOMContentLoaded', function () {
                         beginTimeInput.value = festival.beginTime;
                         endTimeInput.value = festival.endTime;
                         ticketPriceInput.value = festival.ticketPrice;
+
+                        festivalEditForm.addEventListener('submit', function (e) {
+                            e.preventDefault();
+
+                            let formData = new FormData(festivalEditForm);
+
+                            let xhr = new XMLHttpRequest();
+                            xhr.open('POST', '../Controller/editFestival.php', true);
+
+                            xhr.onload = function () {
+                                if (this.status === 200) {
+                                    console.log("Festival updated successfully");
+                                    document.getElementById('select-festival-button').click();
+                                } else {
+                                    console.log('Error status: ' + this.status);
+                                }
+                            };
+
+                            xhr.onerror = function () {
+                                console.log('Request failed');
+                            };
+
+                            xhr.send(formData);
+                        });
+                    });
+
+                    const deleteButton = document.createElement('button');
+                    if (lang === 'fr') {
+                        deleteButton.textContent = 'Supprimer';
+                    } else if (lang === 'en') {
+                        deleteButton.textContent = 'Delete';
+                    } else if (lang === 'cnko') {
+                        deleteButton.textContent = '지우다';
+                    }
+                    deleteButton.addEventListener('click', function () {
+                        if (confirm('Are you sure you want to delete this festival?')) {
+                            let xhr = new XMLHttpRequest();
+                            xhr.open('POST', '../Controller/deleteFestival.php', true);
+                            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                            xhr.onload = function () {
+                                if (this.status === 200) {
+                                    console.log("Festival deleted successfully");
+                                    festivalItem.remove();
+                                } else {
+                                    console.log('Error status: ' + this.status);
+                                }
+                            };
+                            xhr.onerror = function () {
+                                console.log('Request failed');
+                            };
+                            xhr.send('festivalId=' + encodeURIComponent(festival.festivalId));
+                        }
                     });
 
                     festivalItem.addEventListener('click', function (event) {
@@ -505,6 +630,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
 
                     festivalItem.appendChild(editButton);
+                    festivalItem.appendChild(deleteButton);
                     festivalList.style.order = '1';
                     festivalList.appendChild(festivalItem);
                 });
