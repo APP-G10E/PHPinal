@@ -16,6 +16,7 @@ if ($conn->connect_error) {
 
 // Get the customer ID from the URL
 $customerId = $conn->real_escape_string($_GET['customerId']);
+$login_expire_time = date('Y-m-d H:i:s', strtotime('+12 hours'));
 
 // Fetch customer information
 $sql = "SELECT firstName FROM customers WHERE customerId = '$customerId'";
@@ -61,19 +62,20 @@ $conn->close();
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const customerId = "<?php echo $customerId; ?>";
+            const loginExpireTime = "<?php echo $login_expire_time; ?>";
 
             const button = document.querySelector('.translatable.right-header-button[data-translation-key="back_to_HomePage"]');
-            const button2 = document.querySelector('.translatable.right-header-button[data-translation-key="Buy"]');
+            const button2 = document.querySelector('.translatable.right-header-button[data-translation-key="payment"]');
 
             if (button) {
                 button.addEventListener('click', function () {
-                    const url = `homepage.php?customerId=${customerId}`;
+                    const url = `homepage.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}`;
                     window.location.href = url;
                 });
             }
             if (button2) {
                 button2.addEventListener('click', function () {
-                    const url1 = `paiement.php?customerId=${customerId}`;
+                    const url1 = `paiement.php?customerId=${customerId}&loginExpireTime=${encodeURIComponent(loginExpireTime)}`;
                     window.location.href = url1;
                 });
             }
