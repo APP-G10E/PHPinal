@@ -132,3 +132,4 @@ include '../Styles/footer.php';
 </html>
 
 <script src="../Controller/lang-select.js"></script>
+<script src="../Controller/demand_acc_orga_validate.js"></script>
