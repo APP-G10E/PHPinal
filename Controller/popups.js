@@ -29,42 +29,26 @@ document.addEventListener('DOMContentLoaded', function () {
         let popups = await fetchPopups();
         console.log("contenu de popups", popups);
 
-        /* Event Listeners */
+        if (popups && popups[lang]) {
+            const elements = [
+                { id: 'footerProtectionDonnees', callback: () => popUp(popups[lang]['htmlProtectionDonnees']) },
+                { id: 'footerMentionsLegales', callback: () => popUp(popups[lang]['htmlMentionsLegales']) },
+                { id: 'footerCGV', callback: () => popUp(popups[lang]['htmlCGU']) },
+                { id: 'footerContactUs', callback: () => { popUp(popups[lang]['htmlContactUs']); window.setupContactForm(); } },
+                { id: 'footerFAQ', callback: () => popUp(popups[lang]['htmlFAQ']) },
+                { id: 'risques-son', callback: () => popUp(popups[lang]['htmlRisquesAuditifs']) },
+                { id: 'footerCookieSettings', callback: () => { console.log('footerCookieSettings clicked'); console.log('lang:', lang); console.log('popups[lang]:', popups[lang]); console.log('popups[lang][\'htmlCookies\']:', popups[lang]['htmlCookies']); resetAndShowCookies(popups[lang]['htmlCookies']); } },
+            ];
 
-        document.getElementById('footerProtectionDonnees').addEventListener('click', function () {
-            popUp(popups[lang]['htmlProtectionDonnees']);
-        });
+            elements.forEach(element => {
+                const el = document.getElementById(element.id);
+                if (el) {
+                    el.addEventListener('click', element.callback);
+                }
+            });
 
-        document.getElementById('footerMentionsLegales').addEventListener('click', function () {
-            popUp(popups[lang]['htmlMentionsLegales']);
-        });
-
-        document.getElementById('footerCGV').addEventListener('click', function () {
-            popUp(popups[lang]['htmlCGU']);
-        });
-
-        document.getElementById('footerContactUs').addEventListener('click', function () {
-            popUp(popups[lang]['htmlContactUs']);
-            window.setupContactForm();
-        });
-
-        document.getElementById('footerFAQ').addEventListener('click', function () {
-            popUp(popups[lang]['htmlFAQ']);
-        });
-
-        document.getElementById('risques-son').addEventListener('click', function () {
-            popUp(popups[lang]['htmlRisquesAuditifs']);
-        });
-
-        document.getElementById('footerCookieSettings').addEventListener('click', function () {
-            console.log('footerCookieSettings clicked');
-            console.log('lang:', lang);
-            console.log('popups[lang]:', popups[lang]);
-            console.log('popups[lang][\'htmlCookies\']:', popups[lang]['htmlCookies']);
             cookies(popups[lang]['htmlCookies']);
-        });
-
-        cookies(popups[lang]['htmlCookies']);
+        }
     }
 
     function bodyClickHandler(event) {
@@ -106,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function cookies(cookieConsentHTML) {
         const cookiesResponse = localStorage.getItem('cookiesResponse');
 
-        if (!cookiesResponse) {
+        if (!cookiesResponse || cookiesResponse === null) {
 
             document.body.insertAdjacentHTML('beforeend', cookieConsentHTML);
 
@@ -116,30 +100,37 @@ document.addEventListener('DOMContentLoaded', function () {
             const acceptCookiesBtn = document.getElementById('acceptCookies');
             const refuseCookiesBtn = document.getElementById('refuseCookies');
 
-            cookieConsent.style.display = 'block';
+            if (acceptCookiesBtn && refuseCookiesBtn) {
+                cookieConsent.style.display = 'block';
 
-            acceptCookiesBtn.addEventListener('click', function () {
-                cookieConsent.style.display = 'none';
-                // Remove the mask
-                let mask = document.getElementById('mask');
-                if (mask) {
-                    mask.remove();
-                }
-                document.body.style.overflow = 'visible';
-                localStorage.setItem('cookiesResponse', 'true');
-            });
+                acceptCookiesBtn.addEventListener('click', function () {
+                    cookieConsent.style.display = 'none';
+                    // Remove the mask
+                    let mask = document.getElementById('mask');
+                    if (mask) {
+                        mask.remove();
+                    }
+                    document.body.style.overflow = 'visible';
+                    localStorage.setItem('cookiesResponse', 'true');
+                });
 
-            refuseCookiesBtn.addEventListener('click', function () {
-                cookieConsent.style.display = 'none';
-                // Remove the mask
-                let mask = document.getElementById('mask');
-                if (mask) {
-                    mask.remove();
-                }
-                document.body.style.overflow = 'visible';
-                localStorage.setItem('cookiesResponse', 'false');
-            });
+                refuseCookiesBtn.addEventListener('click', function () {
+                    cookieConsent.style.display = 'none';
+                    // Remove the mask
+                    let mask = document.getElementById('mask');
+                    if (mask) {
+                        mask.remove();
+                    }
+                    document.body.style.overflow = 'visible';
+                    localStorage.setItem('cookiesResponse', 'false');
+                });
+            }
         }
+    }
+
+    function resetAndShowCookies(cookieConsentHTML) {
+        localStorage.removeItem('cookiesResponse');
+        cookies(cookieConsentHTML);
     }
 
     init().then(r => console.log('Popups loaded'));
