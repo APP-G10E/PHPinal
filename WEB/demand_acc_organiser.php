@@ -83,7 +83,7 @@ include '../Styles/header.php';
         </div>
         <div class="form-group">
             <label for="raison"></label>
-            <input type="text" id="raison" name="raison" class="translatable" data-translation-key="raisonPlaceholder" required>
+            <input type="text" id="raison" name="raison" class="translatable" data-translation-key="raisonPlaceHolder" required>
         </div>
         <div class="form-group">
             <input type="password" id="password" name="password" class="translatable" data-translation-key="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères." required>
@@ -104,6 +104,7 @@ include '../Styles/header.php';
         <div class="under_links">
             <a class="translatable" href="demand_acc_customer.php?lang=<?php echo $lang; ?>" data-translation-key="customerRequestPrompt"></a>
         </div>
+        <div id="error-message"></div>
     </form>
     <div class="image-container">
         <img src="../Assets/fade_logo_banner.png" alt="Image">

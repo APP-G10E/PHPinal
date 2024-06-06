@@ -81,7 +81,8 @@
         "verification_title": "귀하의 인증번호",
         "verify": "확인하기",
         "volumeFestival": "음악절 음량",
-        "vote": "소리를 올리거나 내리기 위해 투표하세요!"
+        "vote": "소리를 올리거나 내리기 위해 투표하세요!",
+        "raisonPlaceHolder": "요구 사유"
     },
     "en": {
         "accessPartnerFestivals": "Access our partner festivals!",
@@ -167,7 +168,8 @@
         "verification_title": "Your Verification Code",
         "verify": "Verify",
         "volumeFestival": "Festival volume",
-        "vote": "Vote to ask for volume UP or DOWN"
+        "vote": "Vote to ask for volume UP or DOWN",
+        "raisonPlaceHolder": "Reason for the request"
     },
     "fr": {
         "accessPartnerFestivals": "Accédez à nos festivals partenaires !",
@@ -253,6 +255,7 @@
         "verification_title": "Votre code de VERIFICATION",
         "verify": "Vérifier",
         "volumeFestival": "Volume du festival",
-        "vote": "Votez pour demander de MONTER ou de BAISSER le son"
+        "vote": "Votez pour demander de MONTER ou de BAISSER le son",
+        "raisonPlaceHolder": "Raison de la demande"
     }
 }
