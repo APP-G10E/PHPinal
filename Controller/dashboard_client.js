@@ -185,4 +185,50 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         xhr.send('sensorId=' + encodeURIComponent(sensorId) + '&vote=' + encodeURIComponent(vote));
     }
+
+    function fetchDataAndUpdateSensorElements() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '../Controller/log_retriever.php', true);
+        xhr.onload = function () {
+            if (this.status === 200) {
+                try {
+                    let data = JSON.parse(this.responseText);
+                    console.log('Data:', data);
+
+                    let lastFrame = data[data.length - 1];
+
+                    let sensorElements = document.querySelectorAll('.sensor-element');
+                    if (sensorElements.length > 0) {
+                        let sensorElement = sensorElements[0];
+                        let sensorValueElement = sensorElement.querySelector('.volume p');
+                        sensorValueElement.innerText = parseInt(lastFrame.v, 16);
+
+                        let soundLevel = sensorElement.querySelector('.sound-level');
+                        let soundColor = 'soundwhite';
+                        if (lastFrame.v > 80) {
+                            soundColor = 'soundred';
+                        } else if (lastFrame.v < 50) {
+                            soundColor = 'soundgreen';
+                        }
+
+                        soundLevel.classList.remove('soundwhite', 'soundred', 'soundgreen');
+                        soundLevel.classList.add(soundColor);
+                    }
+                } catch (e) {
+                    console.error('Error parsing response as JSON:', e);
+                    console.log('Response:', this.responseText);
+                }
+            } else {
+                console.log('Error status: ' + this.status);
+            }
+        };
+        xhr.onerror = function () {
+            console.log('Request failed');
+        };
+        xhr.send();
+    }
+
+    fetchDataAndUpdateSensorElements();
+
+    setInterval(fetchDataAndUpdateSensorElements, 1000);
 });

@@ -253,7 +253,7 @@ body div {
 }
 
 #sensor-elements-container {
-    height: calc((16vh + 21px) * 3);
+    height: calc((16vh + 2.8vh) * 3);
     overflow-y: scroll;
     overflow-x: hidden;
     -ms-overflow-style: none;
@@ -352,7 +352,7 @@ body div {
     align-items: baseline;
     position: relative;
     top: -1.5vh;
-    padding-left: 2vw;
+    padding-left: 1.25vw;
     font-family: Inter-Bold, serif;
     width: fit-content;
     font-size: 6vh;
