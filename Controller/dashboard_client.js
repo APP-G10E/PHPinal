@@ -196,6 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Data:', data);
 
                     let lastFrame = data[data.length - 1];
+                    console.log('Last frame:', lastFrame);
 
                     let sensorElements = document.querySelectorAll('.sensor-element');
                     if (sensorElements.length > 0) {
@@ -230,5 +231,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetchDataAndUpdateSensorElements();
 
-    setInterval(fetchDataAndUpdateSensorElements, 1000);
+    setInterval(fetchDataAndUpdateSensorElements, 100);
 });
